@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600&family=Montserrat:wght@500;700&family=Oswald:wght@400;700&family=Poppins:wght@400;700&family=Playfair+Display:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Source+Sans+Pro:wght@400;600&display=swap');
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+/*
+
+
+############################################
+
+Primary: #2E3A59 (Deep Blue) – Strong, professional, and easy on the eyes.
+Secondary: #F4A261 (Warm Orange) – Adds vibrancy and warmth without being overwhelming.
+Accent: #E76F51 (Burnt Coral) – A touch of contrast for buttons and interactive elements.
+Background: #F8FAFC (Soft Off-White) – Clean and readable, great for UX.
+Text: #333333 (Dark Gray) – More comfortable than pure black.
+
+############################################
+
+Headings Poppins (Bold, modern, and highly readable)
+Body Text: (Crisp and easy on the eyes)
+Call-to-Action Montserrat (Sharp and attention-grabbing)
+
+\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+
+        font-family: 'Oswald', sans-serif;
+        font-family: 'Bebas Neue', sans-serif;
+        font-family: 'Playfair Display', serif;
+
+#############################################
+
+
+*/
+
+
+
+.header {
+    background-color: #2E3A59;
+    height:100px;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.logotext{
+    font-family: 'Playfair Display', serif;
+}
