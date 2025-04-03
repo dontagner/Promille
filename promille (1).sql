@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Värd: 127.0.0.1
--- Tid vid skapande: 03 apr 2025 kl 10:02
+-- Tid vid skapande: 03 apr 2025 kl 10:18
 -- Serverversion: 10.4.32-MariaDB
 -- PHP-version: 8.2.12
 
@@ -28,7 +28,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tbluser` (
-  `id` int(11) NOT NULL
+  `id` int(11) NOT NULL,
+  `namn` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `weight` int(11) NOT NULL,
+  `height` int(11) NOT NULL,
+  `alkoholvolym` int(11) NOT NULL,
+  `userlevel` int(11) NOT NULL DEFAULT 10
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
