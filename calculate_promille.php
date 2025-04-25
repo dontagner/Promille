@@ -1,5 +1,7 @@
 <?php
+date_default_timezone_set('Europe/Stockholm');
 function calculatePromille($userid, $conn) {
+    error_log("Beräknar promille för användare: $userid");
     // 1. Hämta användarens vikt
     $weight = 0; // tillfälligt default
     $stmt = $conn->prepare("SELECT weight FROM tbluser WHERE id = ?");
@@ -42,20 +44,31 @@ function calculatePromille($userid, $conn) {
 
     if ($total_alcohol_grams == 0) return 0;
 
-    // 3. Räkna ut antal timmar sedan första dryck
-    $hours = (time() - $earliest_time) / 3600;
+    // 3. Räkna ut antal minuter sedan första dryck
+    $current_time = time(); // Använd en enda tidsstämpel
+    $minutes_since_first_drink = ($current_time - $earliest_time) / 60;
 
     // 4. Beräkna promille
     $r = 0.68; // förenklad konstant
-    $burn_rate_per_minute = (0.15* 100 ) / 60; // = 0.0025 promille per minut
-    $minutes = (time() - $earliest_time) / 60;
+    $burn_rate_per_minute = (0.15 * 100) / 60; // = 0.0025 promille per minut
     
-    $burned = $burn_rate_per_minute * $minutes;
+    $burned = $burn_rate_per_minute * $minutes_since_first_drink;
     
     $promille = ($total_alcohol_grams / ($weight * $r)) - $burned;
     $promille = max(0, $promille); // Förhindra negativa värden
-    
 
-    return $promille;
-}
+        if ($total_alcohol_grams == 0) {
+            error_log("Ingen alkohol hittades för användare: $userid");
+            return 0;
+        }
+    
+        // Debug: Kontrollera mellanresultat
+        error_log("Användare: $userid");
+        error_log("Total alkohol i gram: $total_alcohol_grams");
+        error_log("Tid sedan första dryck: $minutes_since_first_drink minuter");
+        error_log("Förbränd alkohol: $burned");
+        error_log("Beräknad promille: $promille");
+    
+        return $promille;
+    }
 ?>
