@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['userid'])) {
-    header("Location: login.php");
+    header("Location: loggain.php");
     exit;
 }
 
@@ -26,6 +26,7 @@ $name_stmt->execute();
 $name_result = $name_stmt->get_result();
 $user_name = ($name_result->num_rows > 0) ? $name_result->fetch_assoc()['namn'] : "Okänd";
 
+// Hämta dryckeslogg
 $sql = "SELECT drinktype, alcoholpercent, volume_ml, drinktimestamp 
         FROM tbldrinklog 
         WHERE userid = ? 
@@ -35,31 +36,67 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $userid_to_view);
 $stmt->execute();
 $result = $stmt->get_result();
-
-echo "<h2>Dryckeslogg för användare: <strong>$user_name</strong></h2>";
-echo "<a href='add_drink.php'>Tillbaka till lägg till dryck</a> | <a href='logout.php'>Logga ut</a> | <a href='user_list.php'>Kolla alla användare</a><br><br>";
-
-if ($result->num_rows > 0) {
-    echo "<table border='1'>
-            <tr>
-                <th>Dryckestyp</th>
-                <th>Alkohol%</th>
-                <th>Volym (ml)</th>
-                <th>Tid</th>
-            </tr>";
-    while ($row = $result->fetch_assoc()) {
-        echo "<tr>
-                <td>{$row['drinktype']}</td>
-                <td>{$row['alcoholpercent']}</td>
-                <td>{$row['volume_ml']}</td>
-                <td>{$row['drinktimestamp']}</td>
-              </tr>";
-    }
-    echo "</table>";
-} else {
-    echo "Inga drycker hittades för denna användare.";
-}
-
-$stmt->close();
-$conn->close();
 ?>
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visa drinkar</title>
+    <link rel="stylesheet" href="style.css"> <!-- Lägg till din CSS-fil här -->
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">Promille Tracker</div>
+        <nav>
+            <ul>
+                <li><a href="home.php">Hem</a></li>
+                <li><a href="leaderboard.php">Leaderboard</a></li>
+                <li><a href="add_drink.php">Lägg till dryck</a></li>
+                <li><a href="user_list.php">Kolla alla användare</a></li>
+                <li><a href="loggaut.php">Logga ut</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Main Content -->
+    <main>
+        <h2>Dryckeslogg för användare: <strong><?php echo htmlspecialchars($user_name); ?></strong></h2>
+
+        <?php if ($result->num_rows > 0): ?>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Dryckestyp</th>
+                        <th>Alkohol%</th>
+                        <th>Volym (ml)</th>
+                        <th>Tid</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php while ($row = $result->fetch_assoc()): ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($row['drinktype']); ?></td>
+                            <td><?php echo htmlspecialchars($row['alcoholpercent']); ?></td>
+                            <td><?php echo htmlspecialchars($row['volume_ml']); ?></td>
+                            <td><?php echo htmlspecialchars($row['drinktimestamp']); ?></td>
+                        </tr>
+                    <?php endwhile; ?>
+                </tbody>
+            </table>
+        <?php else: ?>
+            <p>Inga drycker hittades för denna användare.</p>
+        <?php endif; ?>
+
+        <?php
+        $stmt->close();
+        $conn->close();
+        ?>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Promille Tracker</p>
+    </footer>
+</body>
+</html>

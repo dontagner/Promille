@@ -9,7 +9,9 @@ if (!isset($_SESSION['userid'])) {
 <html lang="sv">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Promille-leaderboard</title>
+    <link rel="stylesheet" href="style.css"> <!-- Lägg till din CSS-fil här -->
     <script>
     function updatePromille() {
         const xhr = new XMLHttpRequest();
@@ -46,29 +48,47 @@ if (!isset($_SESSION['userid'])) {
             loadLeaderboard();
         }, 30000); // Kör var 30:e sekund
     };
-</script>
+    </script>
 </head>
 <body>
-    <h2>🍻 Promille-leaderboard</h2>
-    <a href='add_drink.php'>Lägg till dryck</a> |
-    <a href='user_list.php'>Visa användare</a> |
-    <a href='loggaut.php'>Logga ut</a>
-    <br><br>
+    <!-- Header -->
+    <header>
+        <div class="logo">Promille Tracker</div>
+        <nav>
+            <ul>
+                <li><a href="home.php">Hem</a></li>
+                <li><a href="leaderboard.php">Leaderboard</a></li>
+                <li><a href="add_drink.php">Lägg till dryck</a></li>
+                <li><a href="user_list.php">Kolla alla användare</a></li>
+                <li><a href="loggaut.php">Logga ut</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <table border='1' cellpadding='5'>
-        <thead>
-            <tr>
-                <th>Placering</th>
-                <th>Namn</th>
-                <th>Promille</th>
-                <th>Senast druckit</th>
-            </tr>
-        </thead>
-        <tbody id="leaderboard-body">
-            <tr><td colspan="4">Laddar data...</td></tr>
-        </tbody>
-    </table>
+    <!-- Main Content -->
+    <main>
+        <h2>🍻 Promille-leaderboard</h2>
 
-    <p id="last-updated" style="margin-top:10px; font-style: italic; color: gray;">Senast uppdaterad: laddar...</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Placering</th>
+                    <th>Namn</th>
+                    <th>Promille</th>
+                    <th>Senast druckit</th>
+                </tr>
+            </thead>
+            <tbody id="leaderboard-body">
+                <tr><td colspan="4">Laddar data...</td></tr>
+            </tbody>
+        </table>
+
+        <p id="last-updated" class="last-updated">Senast uppdaterad: laddar...</p>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Promille Tracker</p>
+    </footer>
 </body>
 </html>

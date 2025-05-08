@@ -9,6 +9,9 @@ if ($conn->connect_error) {
     die("Kunde inte ansluta: " . $conn->connect_error);
 }
 
+// Inkludera calculate_promille.php endast en gång
+include_once 'calculate_promille.php';
+
 // Hämta alla användare
 $sql = "SELECT id FROM tbluser";
 $result = $conn->query($sql);
@@ -16,26 +19,33 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $userid = $row['id'];
-
-        // Debug: Kontrollera användar-ID
         error_log("Uppdaterar promille för användare: $userid");
 
-        // Beräkna promille för varje användare
-        include 'calculate_promille.php';
+        // Beräkna promille
         $promille = calculatePromille($userid, $conn);
 
-        // Debug: Kontrollera beräknad promille
+        if ($promille === null) {
+            error_log("Promille kunde inte beräknas för användare: $userid");
+            continue;
+        }
+
         error_log("Beräknad promille för användare $userid: $promille");
 
-        // Uppdatera promillen i databasen
-        $stmt = $conn->prepare("UPDATE tblpromille SET promille = ?, updated_at = NOW() WHERE userid = ?");
+        // Uppdatera eller lägg till användaren i tblpromille
+        $stmt = $conn->prepare("
+            INSERT INTO tblpromille (userid, promille, updated_at) 
+            VALUES (?, ?, NOW()) 
+            ON DUPLICATE KEY UPDATE promille = VALUES(promille), updated_at = NOW()
+        ");
         if (!$stmt) {
             error_log("Fel vid förberedelse av SQL: " . $conn->error);
             continue;
         }
-        $stmt->bind_param("di", $promille, $userid);
+        $stmt->bind_param("id", $userid, $promille);
         if (!$stmt->execute()) {
             error_log("Fel vid uppdatering av promille: " . $stmt->error);
+        } else {
+            error_log("Promille uppdaterad för användare $userid.");
         }
         $stmt->close();
     }

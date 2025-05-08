@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['userid'])) {
-    header("Location: login.php");
+    header("Location: loggain.php");
     exit;
 }
 
@@ -26,16 +26,9 @@ $sql = "INSERT INTO tbldrinklog (userid, drinktype, alcoholpercent, volume_ml)
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("isdd", $userid, $drinktype, $alcoholpercent, $volume_ml);
 
-if ($stmt->execute()) {
-    echo "Drycken sparades! <a href='add_drink.php'>Lägg till en till</a> eller <a href='view_drinks.php'>Visa logg</a>";
-} else {
-    echo "Fel: " . $stmt->error;
-}
+$success = $stmt->execute();
+$message = $success ? "Drycken sparades!" : "Fel: " . $stmt->error;
 
-
-
-
-// löst //
 // Inkludera promille-beräkning
 require_once 'calculate_promille.php';
 
@@ -64,8 +57,47 @@ if ($check_result->num_rows > 0) {
     $insert_stmt->close();
 }
 
-
-
 $stmt->close();
 $conn->close();
 ?>
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lägg till dryck</title>
+    <link rel="stylesheet" href="style.css"> <!-- Lägg till din CSS-fil här -->
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.php">Hem</a></li>
+                <li><a href="leaderboard.php">Leaderboard</a></li>
+                <li><a href="add_drink.php">Lägg till dryck</a></li>
+                <li><a href="user_list.php">Kolla alla användare</a></li>
+                <li><a href="loggaut.php">Logga ut</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <h2>Lägg till dryck</h2>
+        <p><?php echo htmlspecialchars($message); ?></p>
+
+        <?php if ($success): ?>
+            <p><a href="add_drink.php">Lägg till en till dryck</a></p>
+            <p><a href="view_drinks.php">Visa mina tidigare drycker</a></p>
+        <?php else: ?>
+            <p><a href="add_drink.php">Försök igen</a></p>
+        <?php endif; ?>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Promille Tracker</p>
+    </footer>
+</body>
+</html>
