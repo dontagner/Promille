@@ -16,6 +16,7 @@ if (!isset($_SESSION['userid'])) {
 <body>
     <!-- Header -->
     <header>
+        <div class="logo">Promille Tracker</div>
         <nav>
             <ul>
                 <li><a href="home.php">Hem</a></li>
