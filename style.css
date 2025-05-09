@@ -891,9 +891,76 @@ main {
 
 
 
+/* Header styling */
+header {
+    background-color: #061e31; /* Behåll den nuvarande färgen */
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
 
+header img {
+    width: 200px; /* Behåll logotypens storlek */
+    height: auto;
+}
 
+.dropdown {
+    position: relative;
+}
 
+.menu-toggle {
+    background-color: #f4a261; /* Orange bakgrund */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.menu-toggle:hover {
+    background-color: #e76f51; /* Mörkare orange vid hover */
+}
+
+.dropdown-menu {
+    display: none; /* Dölj menyn som standard */
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #061e31; /* Samma färg som headern */
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.dropdown-menu li {
+    text-align: center;
+    padding: 10px 20px;
+}
+
+.dropdown-menu li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #f4a261; /* Orange bakgrund vid hover */
+    color: #061e31; /* Mörk text vid hover */
+}
+
+.dropdown.show .dropdown-menu {
+    display: block; /* Visa menyn när den är aktiv */
+}
 
 
 /* Footer */
