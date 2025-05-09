@@ -59,7 +59,7 @@ $conn->close();
 <body>
     <!-- Header -->
     <header>
-        <div class="logo">Promille Tracker</div>
+    <img src="bilder/logotyp.png" alt="">
         <nav>
             <ul>
                 <li><a href="home.php">Hem</a></li>
@@ -73,17 +73,19 @@ $conn->close();
 
     <!-- Main Content -->
     <main>
+    <div class="login-submit">
         <h2>Inloggning</h2>
         <p><?php echo htmlspecialchars($message); ?></p>
 
         <?php if ($login_success): ?>
-            <p><a href="home.php">Till startsidan</a></p>
-            <p><a href="leaderboard.php">Till leaderboarden</a></p>
-            <p><a href="loggaut.php">Logga ut</a></p>
+            <a href="home.php">Till startsidan</a>
+            <a href="leaderboard.php">Till leaderboarden</a>
+            <a href="loggaut.php">Logga ut</a>
         <?php else: ?>
-            <p><a href="login.php">Försök igen</a></p>
+            <a href="loggain.php">Försök igen</a>
         <?php endif; ?>
-    </main>
+    </div>
+</main> 
 
     <!-- Footer -->
     <footer>

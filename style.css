@@ -59,9 +59,11 @@ body {
 }
 
 
-header .logo {
-    font-size: 1.5em;
-    font-weight: bold;
+header img  {
+    width: 200px; /* Justera storleken på logotypen här */
+    height: auto; /* Bevara bildens proportioner */
+    margin-right: 20px; /* Avstånd mellan logotyp och text */
+    filter: hue-rotate(20deg);
 }
 
 header nav ul {
@@ -76,27 +78,78 @@ header nav ul li {
 }
 
 header nav ul li a {
-    color: white;
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
+    
 }
 
-header nav ul li a:hover {
-    color: #007BFF;
-}
 
-/* Footer */
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
-}
+/* CSS */  
+    /* CSS */
+    header nav ul li a {
+      align-items: center;
+      background-color: initial;
+      background-image: linear-gradient(#295269, #2E3A59);
+      border-radius: 8px;
+      border-width: 0;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, .1),0 3px 6px rgba(0, 0, 0, .05);
+      box-sizing: border-box;
+      color: #fff;
+      cursor: pointer;
+      display: inline-flex;
+      flex-direction: column;
+      font-family: poppins, sans-serif;
+      font-size: 18px;
+      height: 52px;
+      justify-content: center;
+      line-height: 1;
+      margin: 0;
+      outline: none;
+      overflow: hidden;
+      padding: 0 32px;
+      text-align: center;
+      text-decoration: none;
+      transform: translate3d(0, 0, 0);
+      transition: all 150ms;
+      vertical-align: baseline;
+      white-space: nowrap;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+    
+    header nav ul li a:hover {
+      box-shadow: rgba(0, 1, 0, .2) 0 2px 8px;
+      opacity: .85;
+    }
+    
+    header nav ul li a:active {
+      outline: 0;
+    }
+    
+    header nav ul li a:focus {
+      box-shadow: rgba(0, 0, 0, .5) 0 0 0 3px;
+    }
+    
+    @media (max-width: 420px) {
+      .button-84 {
+        height: 48px;
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* För att undvika att innehållet hamnar bakom header och footer */
 /* Header */
@@ -104,7 +157,7 @@ footer {
 /* Header */
 /* Header */
 header {
-    background-color: #333;
+    background-color:  #061e31;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -118,17 +171,740 @@ header {
 
 /* För att undvika att innehållet hamnar bakom header och footer */
 main {
+    min-height: 87vh;
+    background-image: url(bilder/background.jfif);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     padding: 20px;
     padding-bottom: 60px; /* För att ge plats åt footern */
 }
 
+
+
+/* Leaderboard-specifik styling */
+/* Leaderboard-specifik styling */
+/* Leaderboard-specifik styling */
+.leaderboard {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 16px; /* Rundade hörn */
+    font-family: 'Poppins', sans-serif;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.leaderboard h2 {
+    text-align: center;
+    color: #ffe15a; /* Mörkblå för rubriken */
+    text-shadow: 0px 0px 5px #5a4a16; /* Mörk skugga för rubriken */
+    font-size: 2.5rem; /* Stor rubriktext */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.leaderboard table {
+    width: 100%;
+    border-collapse: separate; /* Separata celler */
+    border-spacing: 0 10px; /* Avstånd mellan rader */
+    margin-top: 20px;
+    font-size: 1.1rem; /* Ökad textstorlek för bättre läsbarhet */
+}
+
+.leaderboard table th,
+.leaderboard table td {
+    padding: 15px; /* Mer utrymme för text */
+    text-align: center;
+    background-color: #f8f9fa; /* Ljus bakgrund för celler */
+    box-shadow: 0 10px 10px rgba(0, 0, 1, 0.05); /* Mjuk skugga för celler */
+}
+
+.leaderboard table th {
+    background-color: #fdfdfd; /* Mörkblå bakgrund för rubriker */
+    color: #0c1f44; /* Vit text för hög kontrast */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+
+.leaderboard table tr {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Mjuk skugga för rader */
+}
+
+.leaderboard table tr:hover td {
+    color: #242424; /* Vit text vid hover */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.leaderboard .last-updated {
+    margin-top: 15px;
+    font-style: italic;
+    text-align: center;
+    color: #333333; /* Mörkgrå text */
+    font-size: 0.9rem;
+}
+
+/* För att göra texten större och tydligare */
+.leaderboard table th,
+.leaderboard table td {
+    font-size: 1.3rem; /* Ökad textstorlek */
+    line-height: 1.5; /* Ökad radavstånd */
+}
+
+
+/* Placering 1 - Guld */
+.leaderboard table tr.gold td {
+    height: 14vh;
+    background-color: #ffd700; /* Guld */
+    color: #ffffff; /* Svart text för kontrast */
+    font-weight: bold;
+    text-shadow: 0px 0px 10px #301e03;
+}
+
+.leaderboard table tr.gold {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Mörkare skugga för guldmedaljörer */
+    transform: scale(1.06); /* Liten förstoring för guldmedaljörer */
+    transition: transform 0.3s ease; /* Mjuk övergångseffekt */
+}
+
+/* Placering 2 - Silver */
+.leaderboard table tr.silver td {
+    height: 10vh;
+    background-color: #c0c0c0; /* Silver */
+    color: #ffffff; /* Svart text för kontrast */
+    font-weight: bold;
+    text-shadow: 1px 1px 2px #000000;
+}
+
+.leaderboard table tr.silver {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Mörkare skugga för guldmedaljörer */
+    transform: scale(1.02); /* Liten förstoring för guldmedaljörer */
+    transition: transform 0.3s ease; /* Mjuk övergångseffekt */
+}
+
+/* Placering 3 - Brons */
+.leaderboard table tr.bronze td {
+    height: 8vh;
+    background-color: #cd7f32; /* Brons */
+    color: #ffffff; /* Svart text för kontrast */
+    font-weight: bold;
+    text-shadow: 1px 1px 2px #000000;
+}
+
+/* Responsiv design */
+@media (max-width: 768px) {
+    .leaderboard {
+        padding: 15px;
+    }
+
+    .leaderboard h2 {
+        font-size: 1.8rem;
+    }
+
+    .leaderboard table th,
+    .leaderboard table td {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Formulär-specifik styling */
+.add-drink-form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2); /* Halvtransparent vit bakgrund */
+    border-radius: 16px; /* Rundade hörn */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Mjuk skugga */
+    backdrop-filter: blur(10px); /* Glaseffekt */
+    -webkit-backdrop-filter: blur(10px); /* Glaseffekt för Safari */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtil kantlinje */
+    font-family: 'Poppins', sans-serif;
+}
+
+.add-drink-form h2 {
+    text-align: center;
+    color: #2E3A59; /* Mörkblå för rubriken */
+    font-size: 2rem; /* Stor rubriktext */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.add-drink-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #2E3A59; /* Mörkblå text */
+}
+
+.add-drink-form input,
+.add-drink-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(46, 58, 89, 0.3); /* Subtil kantlinje */
+    border-radius: 8px; /* Rundade hörn */
+    background: rgba(255, 255, 255, 0.6); /* Halvtransparent vit bakgrund */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Mjuk skugga */
+    font-size: 1rem;
+    color: #333333; /* Mörkgrå text */
+    font-family: 'Poppins', sans-serif;
+}
+
+.add-drink-form input:focus,
+.add-drink-form select:focus {
+    outline: none;
+    border: 1px solid #f4a261; /* Orange kant vid fokus */
+    box-shadow: 0 0 8px rgba(244, 162, 97, 0.8); /* Orange skugga vid fokus */
+}
+
+.add-drink-form input[type="submit"] {
+    background: linear-gradient(90deg, #f4a261, #e76f51); /* Orange gradient */
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 8px; /* Rundade hörn */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Mjuk skugga */
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.add-drink-form input[type="submit"]:hover {
+    background: linear-gradient(90deg, #e76f51, #f4a261); /* Omvänd gradient vid hover */
+    transform: scale(1.05); /* Liten förstoring vid hover */
+}
+
+.add-drink-form input[type="submit"]:active {
+    transform: scale(0.95); /* Liten krympning vid klick */
+}
+
+.add-drink-form a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #2E3A59; /* Mörkblå text */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.add-drink-form a:hover {
+    color: #f4a261; /* Orange text vid hover */
+}   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* User List-specifik styling */
+.user-list {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2); /* Halvtransparent vit bakgrund */
+    border-radius: 16px; /* Rundade hörn */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Mjuk skugga */
+    backdrop-filter: blur(10px); /* Glaseffekt */
+    -webkit-backdrop-filter: blur(10px); /* Glaseffekt för Safari */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtil kantlinje */
+    font-family: 'Poppins', sans-serif;
+}
+
+.user-list h2 {
+    text-align: center;
+    color: #2E3A59; /* Mörkblå för rubriken */
+    font-size: 2rem; /* Stor rubriktext */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.user-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.user-list ul li {
+    background: rgba(255, 255, 255, 0.6); /* Halvtransparent vit bakgrund */
+    border-radius: 12px; /* Rundade hörn */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Mjuk skugga */
+    margin-bottom: 10px; /* Avstånd mellan listobjekt */
+    padding: 15px;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.user-list ul li:hover {
+    transform: scale(1.02); /* Liten förstoring vid hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Starkare skugga vid hover */
+}
+
+.user-list ul li a {
+    text-decoration: none;
+    color: #2E3A59; /* Mörkblå text */
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.user-list ul li a:hover {
+    color: #f4a261; /* Orange text vid hover */
+}
+
+.user-list ul li span {
+    color: #333333; /* Mörkgrå text */
+    font-weight: normal;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+
+
+
+
+
+
+
+
+/* View Drinks-specifik styling */
+.view-drinks {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2); /* Halvtransparent vit bakgrund */
+    border-radius: 16px; /* Rundade hörn */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Mjuk skugga */
+    backdrop-filter: blur(10px); /* Glaseffekt */
+    -webkit-backdrop-filter: blur(10px); /* Glaseffekt för Safari */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtil kantlinje */
+    font-family: 'Poppins', sans-serif;
+}
+
+.view-drinks h2 {
+    text-align: center;
+    color: #2E3A59; /* Mörkblå för rubriken */
+    font-size: 2rem; /* Stor rubriktext */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.view-drinks table {
+    width: 100%;
+    border-collapse: separate; /* Separata celler */
+    border-spacing: 0 10px; /* Avstånd mellan rader */
+    margin-top: 20px;
+    font-size: 1.1rem; /* Ökad textstorlek för bättre läsbarhet */
+    border:none;
+}
+
+.view-drinks table th,
+.view-drinks table td {
+    padding: 15px; /* Mer utrymme för text */
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.6); /* Halvtransparent vit för celler */
+    border-radius: 12px; /* Rundade hörn för celler */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Mjuk skugga för celler */
+    backdrop-filter: blur(5px); /* Glaseffekt för celler */
+}
+
+.view-drinks table th {
+    background-color: rgba(46, 58, 89, 0.8); /* Mörkblå med transparens för rubriker */
+    color: #ffffff; /* Vit text för hög kontrast */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.view-drinks p {
+    text-align: center;
+    color: #333333; /* Mörkgrå text */
+    font-size: 1rem;
+    margin-top: 20px;
+    font-style: italic;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Logga in-specifik styling */
+.login-form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2); /* Halvtransparent vit bakgrund */
+    border-radius: 16px; /* Rundade hörn */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Mjuk skugga */
+    backdrop-filter: blur(10px); /* Glaseffekt */
+    -webkit-backdrop-filter: blur(10px); /* Glaseffekt för Safari */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtil kantlinje */
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.login-form h2 {
+    color: #2E3A59; /* Mörkblå för rubriken */
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #2E3A59; /* Mörkblå text */
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(46, 58, 89, 0.3); /* Subtil kantlinje */
+    border-radius: 8px; /* Rundade hörn */
+    background: rgba(255, 255, 255, 0.6); /* Halvtransparent vit bakgrund */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Mjuk skugga */
+    font-size: 1rem;
+    color: #333333; /* Mörkgrå text */
+    font-family: 'Poppins', sans-serif;
+}
+
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+    outline: none;
+    border: 1px solid #f4a261; /* Orange kant vid fokus */
+    box-shadow: 0 0 8px rgba(244, 162, 97, 0.8); /* Orange skugga vid fokus */
+}
+
+.login-form input[type="submit"] {
+    background: linear-gradient(90deg, #f4a261, #e76f51); /* Orange gradient */
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 8px; /* Rundade hörn */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Mjuk skugga */
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.login-form input[type="submit"]:hover {
+    background: linear-gradient(90deg, #e76f51, #f4a261); /* Omvänd gradient vid hover */
+    transform: scale(1.05); /* Liten förstoring vid hover */
+}
+
+.login-form input[type="submit"]:active {
+    transform: scale(0.95); /* Liten krympning vid klick */
+}
+
+.login-form a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #2E3A59; /* Mörkblå text */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.login-form a:hover {
+    color: #f4a261; /* Orange text vid hover */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Logga in Submit-specifik styling */
+.login-submit {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2); /* Halvtransparent vit bakgrund */
+    border-radius: 16px; /* Rundade hörn */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Mjuk skugga */
+    backdrop-filter: blur(10px); /* Glaseffekt */
+    -webkit-backdrop-filter: blur(10px); /* Glaseffekt för Safari */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtil kantlinje */
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.login-submit h2 {
+    color: #2E3A59; /* Mörkblå för rubriken */
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.login-submit p {
+    font-size: 1.2rem;
+    color: #333333; /* Mörkgrå text */
+    margin-bottom: 20px;
+}
+
+.login-submit a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: linear-gradient(90deg, #f4a261, #e76f51); /* Orange gradient */
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px; /* Rundade hörn */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Mjuk skugga */
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.login-submit a:hover {
+    background: linear-gradient(90deg, #e76f51, #f4a261); /* Omvänd gradient vid hover */
+    transform: scale(1.05); /* Liten förstoring vid hover */
+}
+
+.login-submit a:active {
+    transform: scale(0.95); /* Liten krympning vid klick */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Registrera-specifik styling */
+.register-form {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2); /* Halvtransparent vit bakgrund */
+    border-radius: 16px; /* Rundade hörn */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Mjuk skugga */
+    backdrop-filter: blur(10px); /* Glaseffekt */
+    -webkit-backdrop-filter: blur(10px); /* Glaseffekt för Safari */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtil kantlinje */
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.register-form h2 {
+    color: #2E3A59; /* Mörkblå för rubriken */
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.register-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #2E3A59; /* Mörkblå text */
+}
+
+.register-form input[type="text"],
+.register-form input[type="password"],
+.register-form input[type="number"],
+.register-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(46, 58, 89, 0.3); /* Subtil kantlinje */
+    border-radius: 8px; /* Rundade hörn */
+    background: rgba(255, 255, 255, 0.6); /* Halvtransparent vit bakgrund */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Mjuk skugga */
+    font-size: 1rem;
+    color: #333333; /* Mörkgrå text */
+    font-family: 'Poppins', sans-serif;
+}
+
+.register-form input:focus,
+.register-form select:focus {
+    outline: none;
+    border: 1px solid #f4a261; /* Orange kant vid fokus */
+    box-shadow: 0 0 8px rgba(244, 162, 97, 0.8); /* Orange skugga vid fokus */
+}
+
+.register-form input[type="submit"] {
+    background: linear-gradient(90deg, #f4a261, #e76f51); /* Orange gradient */
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 8px; /* Rundade hörn */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Mjuk skugga */
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.register-form input[type="submit"]:hover {
+    background: linear-gradient(90deg, #e76f51, #f4a261); /* Omvänd gradient vid hover */
+    transform: scale(1.05); /* Liten förstoring vid hover */
+}
+
+.register-form input[type="submit"]:active {
+    transform: scale(0.95); /* Liten krympning vid klick */
+}
+
+.register-form a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #2E3A59; /* Mörkblå text */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.register-form a:hover {
+    color: #f4a261; /* Orange text vid hover */
+}
+
+
+
+
+
+
+
+
+
+/* Registrera Submit-specifik styling */
+.register-submit {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2); /* Halvtransparent vit bakgrund */
+    border-radius: 16px; /* Rundade hörn */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Mjuk skugga */
+    backdrop-filter: blur(10px); /* Glaseffekt */
+    -webkit-backdrop-filter: blur(10px); /* Glaseffekt för Safari */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtil kantlinje */
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.register-submit h2 {
+    color: #2E3A59; /* Mörkblå för rubriken */
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.register-submit p {
+    font-size: 1.2rem;
+    color: #333333; /* Mörkgrå text */
+    margin-bottom: 20px;
+}
+
+.register-submit a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: linear-gradient(90deg, #f4a261, #e76f51); /* Orange gradient */
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px; /* Rundade hörn */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Mjuk skugga */
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.register-submit a:hover {
+    background: linear-gradient(90deg, #e76f51, #f4a261); /* Omvänd gradient vid hover */
+    transform: scale(1.05); /* Liten förstoring vid hover */
+}
+
+.register-submit a:active {
+    transform: scale(0.95); /* Liten krympning vid klick */
+}
+
+
+
+
+
+
+
+
+
+
 /* Footer */
 footer {
-    background-color: #333;
+    background-color: #061e31;
+    font-family: poppins, sans-serif;
     color: white;
     text-align: center;
     padding: 10px 0;
     position: relative; /* Standardpositionering */
     width: 100%;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+
 }

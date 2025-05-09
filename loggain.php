@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <div class="logo">Promille Tracker</div>
+    <img src="bilder/logotyp.png" alt="">
         <nav>
             <ul>
                 <li><a href="home.php">Hem</a></li>
@@ -20,13 +20,20 @@
         </nav>
     </header>
     
-    <h2>Logga in</h2>
-    <form action="loggain_submit.php" method="POST">
-        Namn: <input type="text" name="namn" required><br>
-        Lösenord: <input type="password" name="password" required><br>
-        <input type="submit" value="Logga in">
-    </form>
+    <main>
+        <div class="login-form">
+            <h2>Logga in</h2>
+            <form action="loggain_submit.php" method="POST">
+                <label for="namn">Namn:</label>
+                <input type="text" id="namn" name="namn" required>
 
+                <label for="password">Lösenord:</label>
+                <input type="password" id="password" name="password" required>
+
+                <input type="submit" value="Logga in">
+            </form>
+        </div>
+    </main>
         <!-- Footer -->
     <footer>
         <p>&copy; 2025 Promille Tracker</p>

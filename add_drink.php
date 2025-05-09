@@ -12,11 +12,24 @@ if (!isset($_SESSION['userid'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lägg till dryck</title>
     <link rel="stylesheet" href="style.css"> <!-- Lägg till din CSS-fil här -->
+    <script>
+    // JavaScript för att visa/dölja "Annat"-fältet
+    function toggleOtherDrink() {
+        const drinkSelect = document.getElementById("drinktype");
+        const otherDrinkDiv = document.getElementById("otherDrinkDiv");
+        if (drinkSelect.value === "Annat") {
+            otherDrinkDiv.style.display = "block";
+        } else {
+            otherDrinkDiv.style.display = "none";
+            document.getElementById("otherdrink").value = ""; // Rensa om fältet döljs
+        }
+    }
+    </script>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <div class="logo">Promille Tracker</div>
+    <img src="bilder/logotyp.png" alt="">
         <nav>
             <ul>
                 <li><a href="home.php">Hem</a></li>
@@ -30,10 +43,22 @@ if (!isset($_SESSION['userid'])) {
 
     <!-- Main Content -->
     <main>
+        <div class="add-drink-form">
         <h2>Lägg till en dryck</h2>
         <form action="add_drink_submit.php" method="POST">
             <label for="drinktype">Dryckestyp:</label>
-            <input type="text" id="drinktype" name="drinktype" required><br>
+            <select id="drinktype" name="drinktype" onchange="toggleOtherDrink()" required>
+                <option value="Cider">Cider</option>
+                <option value="Öl">Öl</option>
+                <option value="Shot">Shot</option>
+                <option value="Drink">Drink</option>
+                <option value="Annat">Annat</option>
+            </select><br>
+
+            <div id="otherDrinkDiv" style="display:none;">
+                <label for="otherdrink">Ange annan dryck:</label>
+                <input type="text" id="otherdrink" name="otherdrink"><br>
+            </div>
 
             <label for="alcoholpercent">Alkoholhalt (%):</label>
             <input type="number" id="alcoholpercent" name="alcoholpercent" step="0.1" required><br>
@@ -45,6 +70,7 @@ if (!isset($_SESSION['userid'])) {
         </form>
         <br>
         <a href="view_drinks.php">Visa mina tidigare drycker</a>
+        </div>
     </main>
 
     <!-- Footer -->

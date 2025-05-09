@@ -34,7 +34,7 @@ $result = $conn->query($sql);
 <body>
     <!-- Header -->
     <header>
-        <div class="logo">Promille Tracker</div>
+    <img src="bilder/logotyp.png" alt="">
         <nav>
             <ul>
                 <li><a href="home.php">Hem</a></li>
@@ -48,6 +48,7 @@ $result = $conn->query($sql);
 
     <!-- Main Content -->
     <main>
+        <div class="user-list">
         <h2>Lista över användare och deras promille</h2>
 
         <?php if ($result->num_rows > 0): ?>
@@ -59,7 +60,7 @@ $result = $conn->query($sql);
                     $promille = is_null($row['promille']) ? "–" : number_format($row['promille'], 2) . " ‰";
                     ?>
                     <li>
-                        <a href="view_drinks.php?userid=<?php echo $user_id; ?>">🍻 <?php echo $namn; ?> (<?php echo $promille; ?>)</a>
+                        <a href="view_drinks.php?userid=<?php echo $user_id; ?>"><?php echo $namn; ?> (<?php echo $promille; ?>)</a>
                     </li>
                 <?php endwhile; ?>
             </ul>
@@ -68,6 +69,7 @@ $result = $conn->query($sql);
         <?php endif; ?>
 
         <?php $conn->close(); ?>
+        </div>
     </main>
 
     <!-- Footer -->

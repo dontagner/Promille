@@ -71,6 +71,7 @@ $conn->close();
 <body>
     <!-- Header -->
     <header>
+    <img src="bilder/logotyp.png" alt="">
         <nav>
             <ul>
                 <li><a href="index.php">Hem</a></li>

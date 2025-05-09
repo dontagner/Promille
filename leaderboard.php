@@ -29,7 +29,14 @@ if (!isset($_SESSION['userid'])) {
         xhr.open("GET", "get_leaderboard.php", true);
         xhr.onload = function () {
             if (xhr.status === 200) {
-                document.getElementById("leaderboard-body").innerHTML = xhr.responseText;
+                const leaderboardBody = document.getElementById("leaderboard-body");
+                leaderboardBody.innerHTML = xhr.responseText;
+
+                // Tilldela färger till de tre första placeringarna
+                const rows = leaderboardBody.querySelectorAll("tr");
+                if (rows[0]) rows[0].classList.add("gold");
+                if (rows[1]) rows[1].classList.add("silver");
+                if (rows[2]) rows[2].classList.add("bronze");
 
                 // Sätt "senast uppdaterad"
                 const now = new Date();
@@ -53,7 +60,7 @@ if (!isset($_SESSION['userid'])) {
 <body>
     <!-- Header -->
     <header>
-        <div class="logo">Promille Tracker</div>
+        <img src="bilder/logotyp.png" alt="">
         <nav>
             <ul>
                 <li><a href="home.php">Hem</a></li>
@@ -67,23 +74,25 @@ if (!isset($_SESSION['userid'])) {
 
     <!-- Main Content -->
     <main>
-        <h2>🍻 Promille-leaderboard</h2>
+        <div class="leaderboard">
+            <h2>Leaderboard</h2>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Placering</th>
-                    <th>Namn</th>
-                    <th>Promille</th>
-                    <th>Senast druckit</th>
-                </tr>
-            </thead>
-            <tbody id="leaderboard-body">
-                <tr><td colspan="4">Laddar data...</td></tr>
-            </tbody>
-        </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Placering</th>
+                        <th>Namn</th>
+                        <th>Promille</th>
+                        <th>Team</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-body">
+                    <tr><td colspan="4">Laddar data...</td></tr>
+                </tbody>
+            </table>
 
-        <p id="last-updated" class="last-updated">Senast uppdaterad: laddar...</p>
+            <p id="last-updated" class="last-updated">Senast uppdaterad: laddar...</p>
+        </div>
     </main>
 
     <!-- Footer -->

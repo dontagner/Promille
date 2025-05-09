@@ -48,7 +48,7 @@ $result = $stmt->get_result();
 <body>
     <!-- Header -->
     <header>
-        <div class="logo">Promille Tracker</div>
+    <img src="bilder/logotyp.png" alt="">
         <nav>
             <ul>
                 <li><a href="home.php">Hem</a></li>
@@ -61,6 +61,7 @@ $result = $stmt->get_result();
     </header>
     <!-- Main Content -->
     <main>
+        <div class="view-drinks">
         <h2>Dryckeslogg för användare: <strong><?php echo htmlspecialchars($user_name); ?></strong></h2>
 
         <?php if ($result->num_rows > 0): ?>
@@ -92,6 +93,7 @@ $result = $stmt->get_result();
         $stmt->close();
         $conn->close();
         ?>
+        </div>
     </main>
 
     <!-- Footer -->

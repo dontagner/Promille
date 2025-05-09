@@ -13,13 +13,14 @@ $namn = $_POST['namn'];
 $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 $weight = $_POST['weight'];
 $height = $_POST['height'];
+$team = $_POST['team'];
 $userlevel = 10; // standard för nya konton
 
-$sql = "INSERT INTO tbluser (namn, password, weight, height, alkoholvolym, userlevel)
-        VALUES (?, ?, ?, ?, 0, ?)";
+$sql = "INSERT INTO tbluser (namn, password, weight, height, alkoholvolym, userlevel, team)
+        VALUES (?, ?, ?, ?, 0, ?, ?)";
 
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ssdii", $namn, $password, $weight, $height, $userlevel);
+$stmt->bind_param("ssdiis", $namn, $password, $weight, $height, $userlevel, $team);
 
 $success = $stmt->execute();
 $message = $success ? "Registrering lyckades!" : "Fel: " . $stmt->error;
@@ -33,12 +34,12 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrering</title>
-    <link rel="stylesheet" href="style.css"> <!-- Lägg till din CSS-fil här -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Header -->
     <header>
-        <div class="logo">Promille Tracker</div>
+        <img src="bilder/logotyp.png" alt="">
         <nav>
             <ul>
                 <li><a href="home.php">Hem</a></li>
@@ -52,14 +53,17 @@ $conn->close();
 
     <!-- Main Content -->
     <main>
+    <div class="register-submit">
         <h2>Registrering</h2>
         <p><?php echo htmlspecialchars($message); ?></p>
+
         <?php if ($success): ?>
-            <p><a href="loggain.php">Logga in här</a></p>
+            <a href="loggain.php">Logga in här</a>
         <?php else: ?>
-            <p><a href="registrera.php">Försök igen</a></p>
+            <a href="registrera.php">Försök igen</a>
         <?php endif; ?>
-    </main>
+    </div>
+</main>
 
     <!-- Footer -->
     <footer>
