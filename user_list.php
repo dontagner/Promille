@@ -30,21 +30,29 @@ $result = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Användarlista</title>
     <link rel="stylesheet" href="style.css"> <!-- Lägg till din CSS-fil här -->
+    <script>
+            function toggleDropdown() {
+    const dropdown = document.querySelector(".dropdown");
+    dropdown.classList.toggle("show");
+}
+    </script>
 </head>
 <body>
     <!-- Header -->
     <header>
-    <img src="bilder/logotyp.png" alt="">
-        <nav>
-            <ul>
-                <li><a href="home.php">Hem</a></li>
+    <div class="header-content">
+        <img src="bilder/logotyp.png" alt="Logotyp">
+        <div class="dropdown">
+            <button class="menu-toggle" onclick="toggleDropdown()">☰ Meny</button>
+            <ul class="dropdown-menu">
                 <li><a href="leaderboard.php">Leaderboard</a></li>
                 <li><a href="add_drink.php">Lägg till dryck</a></li>
                 <li><a href="user_list.php">Kolla alla användare</a></li>
                 <li><a href="loggaut.php">Logga ut</a></li>
             </ul>
-        </nav>
-    </header>
+        </div>
+    </div>
+</header>
 
     <!-- Main Content -->
     <main>

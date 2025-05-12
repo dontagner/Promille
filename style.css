@@ -262,7 +262,7 @@ main {
 /* Placering 1 - Guld */
 .leaderboard table tr.gold td {
     height: 14vh;
-    background-color: #ffd700; /* Guld */
+    background-color: #ffd90000; /* Guld */
     color: #ffffff; /* Svart text för kontrast */
     font-weight: bold;
     text-shadow: 0px 0px 10px #301e03;
@@ -272,12 +272,14 @@ main {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Mörkare skugga för guldmedaljörer */
     transform: scale(1.06); /* Liten förstoring för guldmedaljörer */
     transition: transform 0.3s ease; /* Mjuk övergångseffekt */
+        background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #9e7e32 40%, transparent 80%),
+radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #97772c 62.5%, #96772f 100%);
 }
 
 /* Placering 2 - Silver */
 .leaderboard table tr.silver td {
     height: 10vh;
-    background-color: #c0c0c0; /* Silver */
+    background-color: #c0c0c000; /* Silver */
     color: #ffffff; /* Svart text för kontrast */
     font-weight: bold;
     text-shadow: 1px 1px 2px #000000;
@@ -287,15 +289,29 @@ main {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Mörkare skugga för guldmedaljörer */
     transform: scale(1.02); /* Liten förstoring för guldmedaljörer */
     transition: transform 0.3s ease; /* Mjuk övergångseffekt */
+      background: linear-gradient(
+    45deg,
+    #999 5%,
+    #fff 10%,
+    #ccc 30%,
+    #ddd 50%,
+    #ccc 70%,
+    #fff 80%,
+    #999 95%
+  );
 }
 
 /* Placering 3 - Brons */
 .leaderboard table tr.bronze td {
     height: 8vh;
-    background-color: #cd7f32; /* Brons */
+    background-color: #cd803200; /* Brons */
     color: #ffffff; /* Svart text för kontrast */
     font-weight: bold;
     text-shadow: 1px 1px 2px #000000;
+}
+
+.leaderboard table tr.bronze{
+    background: linear-gradient(45deg, #cd7f32, #b87333, #a67c52, #8c7853);
 }
 
 /* Responsiv design */
@@ -929,8 +945,8 @@ header img {
 .dropdown-menu {
     display: none; /* Dölj menyn som standard */
     position: absolute;
-    top: 100%;
-    right: 0;
+    top: 100%; /* Placera menyn precis under knappen */
+    right: 0; /* Justera menyn till höger */
     background-color: #061e31; /* Samma färg som headern */
     list-style: none;
     padding: 10px 0;
@@ -942,7 +958,7 @@ header img {
 
 .dropdown-menu li {
     text-align: center;
-    padding: 10px 20px;
+    padding: 5px 10px;
 }
 
 .dropdown-menu li a {
@@ -951,6 +967,8 @@ header img {
     font-weight: bold;
     display: block;
     transition: background-color 0.3s ease;
+    line-height: 2.2; /* Ökat radavstånd */
+    padding: 5px;
 }
 
 .dropdown-menu li a:hover {
@@ -961,6 +979,87 @@ header img {
 .dropdown.show .dropdown-menu {
     display: block; /* Visa menyn när den är aktiv */
 }
+
+
+
+
+
+
+
+
+
+
+
+/* Add Drink Submit-specifik styling */
+.add-drink-submit {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2); /* Halvtransparent vit bakgrund */
+    border-radius: 16px; /* Rundade hörn */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Mjuk skugga */
+    backdrop-filter: blur(10px); /* Glaseffekt */
+    -webkit-backdrop-filter: blur(10px); /* Glaseffekt för Safari */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtil kantlinje */
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.add-drink-submit h2 {
+    color: #2E3A59; /* Mörkblå för rubriken */
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.add-drink-submit p {
+    font-size: 1.2rem;
+    color: #333333; /* Mörkgrå text */
+    margin-bottom: 20px;
+}
+
+.add-drink-submit a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: linear-gradient(90deg, #f4a261, #e76f51); /* Orange gradient */
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px; /* Rundade hörn */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Mjuk skugga */
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.add-drink-submit a:hover {
+    background: linear-gradient(90deg, #e76f51, #f4a261); /* Omvänd gradient vid hover */
+    transform: scale(1.05); /* Liten förstoring vid hover */
+}
+
+.add-drink-submit a:active {
+    transform: scale(0.95); /* Liten krympning vid klick */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* Footer */

@@ -71,20 +71,23 @@ $conn->close();
 <body>
     <!-- Header -->
     <header>
-    <img src="bilder/logotyp.png" alt="">
-        <nav>
-            <ul>
-                <li><a href="index.php">Hem</a></li>
+    <div class="header-content">
+        <img src="bilder/logotyp.png" alt="Logotyp">
+        <div class="dropdown">
+            <button class="menu-toggle" onclick="toggleDropdown()">☰ Meny</button>
+            <ul class="dropdown-menu">
                 <li><a href="leaderboard.php">Leaderboard</a></li>
                 <li><a href="add_drink.php">Lägg till dryck</a></li>
                 <li><a href="user_list.php">Kolla alla användare</a></li>
                 <li><a href="loggaut.php">Logga ut</a></li>
             </ul>
-        </nav>
-    </header>
+        </div>
+    </div>
+</header>
 
     <!-- Main Content -->
     <main>
+        <div class="add-drink-submit">
         <h2>Lägg till dryck</h2>
         <p><?php echo htmlspecialchars($message); ?></p>
 
@@ -94,11 +97,18 @@ $conn->close();
         <?php else: ?>
             <p><a href="add_drink.php">Försök igen</a></p>
         <?php endif; ?>
+        </div>
     </main>
 
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 Promille Tracker</p>
     </footer>
+    <script>
+            function toggleDropdown() {
+            const dropdown = document.querySelector(".dropdown");
+            dropdown.classList.toggle("show");
+        }
+    </script>
 </body>
 </html>

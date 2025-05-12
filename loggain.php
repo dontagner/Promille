@@ -7,18 +7,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-    <img src="bilder/logotyp.png" alt="">
-        <nav>
-            <ul>
-                <li><a href="home.php">Hem</a></li>
+<header>
+    <div class="header-content">
+        <img src="bilder/logotyp.png" alt="Logotyp">
+        <div class="dropdown">
+            <button class="menu-toggle" onclick="toggleDropdown()">☰ Meny</button>
+            <ul class="dropdown-menu">
                 <li><a href="leaderboard.php">Leaderboard</a></li>
                 <li><a href="add_drink.php">Lägg till dryck</a></li>
                 <li><a href="user_list.php">Kolla alla användare</a></li>
                 <li><a href="loggaut.php">Logga ut</a></li>
             </ul>
-        </nav>
-    </header>
+        </div>
+    </div>
+</header>
     
     <main>
         <div class="login-form">
@@ -38,5 +40,11 @@
     <footer>
         <p>&copy; 2025 Promille Tracker</p>
     </footer>
+        <script>
+            function toggleDropdown() {
+            const dropdown = document.querySelector(".dropdown");
+            dropdown.classList.toggle("show");
+        }
+    </script>
 </body>
 </html>
