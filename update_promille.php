@@ -1,22 +1,15 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "promille";
+require_once 'func.php'; // Startar session och hämtar getDBConnection()
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Kunde inte ansluta: " . $conn->connect_error);
-}
+$conn = getDBConnection();
 
-// Inkludera calculate_promille.php endast en gång
 include_once 'calculate_promille.php';
 
 // Hämta alla användare
 $sql = "SELECT id FROM tbluser";
 $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
+if ($result && $result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $userid = $row['id'];
         error_log("Uppdaterar promille för användare: $userid");
@@ -41,12 +34,15 @@ if ($result->num_rows > 0) {
             error_log("Fel vid förberedelse av SQL: " . $conn->error);
             continue;
         }
+
         $stmt->bind_param("id", $userid, $promille);
+
         if (!$stmt->execute()) {
             error_log("Fel vid uppdatering av promille: " . $stmt->error);
         } else {
             error_log("Promille uppdaterad för användare $userid.");
         }
+
         $stmt->close();
     }
 } else {
@@ -54,5 +50,6 @@ if ($result->num_rows > 0) {
 }
 
 $conn->close();
+
 echo "Promille uppdaterad.";
 ?>

@@ -1,30 +1,25 @@
 <?php
-session_start();
+require_once 'func.php'; // Startar session och skapar databasanslutning
+
+// Kontrollera inloggning
 if (!isset($_SESSION['userid'])) {
     header("Location: loggain.php");
     exit;
 }
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "promille";
+$conn = getDBConnection();
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Kunde inte ansluta: " . $conn->connect_error);
-}
-
-// Om ett userid skickas i URL:en använder vi det, annars ens egna
+// Om ett userid skickas i URL:en använder vi det, annars användarens egna
 $userid_to_view = isset($_GET['userid']) ? (int)$_GET['userid'] : $_SESSION['userid'];
 
-// Hämta användarens namn för rubrik
+// Hämta användarens namn för rubriken
 $name_sql = "SELECT namn FROM tbluser WHERE id = ?";
 $name_stmt = $conn->prepare($name_sql);
 $name_stmt->bind_param("i", $userid_to_view);
 $name_stmt->execute();
 $name_result = $name_stmt->get_result();
 $user_name = ($name_result->num_rows > 0) ? $name_result->fetch_assoc()['namn'] : "Okänd";
+$name_stmt->close();
 
 // Hämta dryckeslogg
 $sql = "SELECT drinktype, alcoholpercent, volume_ml, drinktimestamp 
@@ -42,59 +37,60 @@ $result = $stmt->get_result();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visa drinkar</title>
-    <link rel="stylesheet" href="style.css"> <!-- Lägg till din CSS-fil här -->
+    <title>Visa drycker</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Header -->
     <header>
-    <div class="header-content">
-        <img src="bilder/logotyp.png" alt="Logotyp">
-        <div class="dropdown">
-            <button class="menu-toggle" onclick="toggleDropdown()">☰ Meny</button>
-            <ul class="dropdown-menu">
-                <li><a href="leaderboard.php">Leaderboard</a></li>
-                <li><a href="add_drink.php">Lägg till dryck</a></li>
-                <li><a href="user_list.php">Kolla alla användare</a></li>
-                <li><a href="loggaut.php">Logga ut</a></li>
-            </ul>
+        <div class="header-content">
+            <img src="bilder/logotyp.png" alt="Logotyp">
+            <div class="dropdown">
+                <button class="menu-toggle" onclick="toggleDropdown()">☰ Meny</button>
+                <ul class="dropdown-menu">
+                    <li><a href="leaderboard.php">Leaderboard</a></li>
+                    <li><a href="add_drink.php">Lägg till dryck</a></li>
+                    <li><a href="user_list.php">Kolla alla användare</a></li>
+                    <li><a href="loggaut.php">Logga ut</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
+
     <!-- Main Content -->
     <main>
         <div class="view-drinks">
-        <h2>Dryckeslogg för användare: <strong><?php echo htmlspecialchars($user_name); ?></strong></h2>
+            <h2>Dryckeslogg för användare: <strong><?php echo htmlspecialchars($user_name); ?></strong></h2>
 
-        <?php if ($result->num_rows > 0): ?>
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Dryckestyp</th>
-                        <th>Alkohol%</th>
-                        <th>Volym (ml)</th>
-                        <th>Tid</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php while ($row = $result->fetch_assoc()): ?>
+            <?php if ($result->num_rows > 0): ?>
+                <table border="1">
+                    <thead>
                         <tr>
-                            <td><?php echo htmlspecialchars($row['drinktype']); ?></td>
-                            <td><?php echo htmlspecialchars($row['alcoholpercent']); ?></td>
-                            <td><?php echo htmlspecialchars($row['volume_ml']); ?></td>
-                            <td><?php echo htmlspecialchars($row['drinktimestamp']); ?></td>
+                            <th>Dryckestyp</th>
+                            <th>Alkohol%</th>
+                            <th>Volym (ml)</th>
+                            <th>Tid</th>
                         </tr>
-                    <?php endwhile; ?>
-                </tbody>
-            </table>
-        <?php else: ?>
-            <p>Inga drycker hittades för denna användare.</p>
-        <?php endif; ?>
+                    </thead>
+                    <tbody>
+                        <?php while ($row = $result->fetch_assoc()): ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($row['drinktype']); ?></td>
+                                <td><?php echo htmlspecialchars($row['alcoholpercent']); ?></td>
+                                <td><?php echo htmlspecialchars($row['volume_ml']); ?></td>
+                                <td><?php echo htmlspecialchars($row['drinktimestamp']); ?></td>
+                            </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+            <?php else: ?>
+                <p>Inga drycker hittades för denna användare.</p>
+            <?php endif; ?>
 
-        <?php
-        $stmt->close();
-        $conn->close();
-        ?>
+            <?php
+            $stmt->close();
+            $conn->close();
+            ?>
         </div>
     </main>
 
@@ -102,8 +98,9 @@ $result = $stmt->get_result();
     <footer>
         <p>&copy; 2025 Promille Tracker</p>
     </footer>
-        <script>
-            function toggleDropdown() {
+
+    <script>
+        function toggleDropdown() {
             const dropdown = document.querySelector(".dropdown");
             dropdown.classList.toggle("show");
         }

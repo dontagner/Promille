@@ -1,19 +1,12 @@
 <?php
-session_start();
+require_once 'func.php'; // Startar session + mysqli-anslutning
+
 if (!isset($_SESSION['userid'])) {
     header("Location: loggain.php");
     exit;
 }
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "promille";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Kunde inte ansluta: " . $conn->connect_error);
-}
+$conn = getDBConnection();
 
 $userid = $_SESSION['userid'];
 $drinktype = $_POST['drinktype'];
@@ -22,34 +15,32 @@ $volume_ml = $_POST['volume_ml'];
 
 $sql = "INSERT INTO tbldrinklog (userid, drinktype, alcoholpercent, volume_ml)
         VALUES (?, ?, ?, ?)";
-
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("isdd", $userid, $drinktype, $alcoholpercent, $volume_ml);
-
 $success = $stmt->execute();
+
 $message = $success ? "Drycken sparades!" : "Fel: " . $stmt->error;
 
-// Inkludera promille-beräkning
 require_once 'calculate_promille.php';
 
 $promille = calculatePromille($userid, $conn);
 
-// Uppdatera eller lägg till i tblpromille
+// Kontrollera om userid finns i tblpromille
 $check_sql = "SELECT userid FROM tblpromille WHERE userid = ?";
 $check_stmt = $conn->prepare($check_sql);
 $check_stmt->bind_param("i", $userid);
 $check_stmt->execute();
-$check_result = $check_stmt->get_result();
+$check_stmt->store_result();
 
-if ($check_result->num_rows > 0) {
-    // Redan finns - uppdatera
+if ($check_stmt->num_rows > 0) {
+    // Uppdatera befintlig post
     $update_sql = "UPDATE tblpromille SET promille = ?, updated_at = NOW() WHERE userid = ?";
     $update_stmt = $conn->prepare($update_sql);
     $update_stmt->bind_param("di", $promille, $userid);
     $update_stmt->execute();
     $update_stmt->close();
 } else {
-    // Ny - lägg till
+    // Lägg till ny post
     $insert_sql = "INSERT INTO tblpromille (userid, promille, updated_at) VALUES (?, ?, NOW())";
     $insert_stmt = $conn->prepare($insert_sql);
     $insert_stmt->bind_param("id", $userid, $promille);
@@ -58,8 +49,10 @@ if ($check_result->num_rows > 0) {
 }
 
 $stmt->close();
+$check_stmt->close();
 $conn->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="sv">
 <head>

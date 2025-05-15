@@ -1,4 +1,6 @@
 <?php
+
+require_once 'func.php'; // Inkludera funktionsfilen
 session_start(); // Starta sessionen
 
 // Rensa alla sessionvariabler

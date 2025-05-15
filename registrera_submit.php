@@ -1,20 +1,15 @@
 <?php
-$servername = "localhost";
-$username = "root"; // ändra vid behov
-$password = "";     // ändra vid behov
-$dbname = "promille"; // byt till er databas
+require_once 'func.php'; // Inkluderar session och getDBConnection()
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Kunde inte ansluta: " . $conn->connect_error);
-}
+$conn = getDBConnection();
 
-$namn = $_POST['namn'];
-$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-$weight = $_POST['weight'];
-$height = $_POST['height'];
-$team = $_POST['team'];
-$userlevel = 10; // standard för nya konton
+// Hämta och sanera formulärdata
+$namn = $_POST['namn'] ?? '';
+$password = isset($_POST['password']) ? password_hash($_POST['password'], PASSWORD_DEFAULT) : '';
+$weight = $_POST['weight'] ?? 0;
+$height = $_POST['height'] ?? 0;
+$team = $_POST['team'] ?? '';
+$userlevel = 10; // Standardnivå för nya användare
 
 $sql = "INSERT INTO tbluser (namn, password, weight, height, alkoholvolym, userlevel, team)
         VALUES (?, ?, ?, ?, 0, ?, ?)";
@@ -39,42 +34,42 @@ $conn->close();
 <body>
     <!-- Header -->
     <header>
-    <div class="header-content">
-        <img src="bilder/logotyp.png" alt="Logotyp">
-        <div class="dropdown">
-            <button class="menu-toggle" onclick="toggleDropdown()">☰ Meny</button>
-            <ul class="dropdown-menu">
-                <li><a href="leaderboard.php">Leaderboard</a></li>
-                <li><a href="add_drink.php">Lägg till dryck</a></li>
-                <li><a href="user_list.php">Kolla alla användare</a></li>
-                <li><a href="loggaut.php">Logga ut</a></li>
-            </ul>
+        <div class="header-content">
+            <img src="bilder/logotyp.png" alt="Logotyp">
+            <div class="dropdown">
+                <button class="menu-toggle" onclick="toggleDropdown()">☰ Meny</button>
+                <ul class="dropdown-menu">
+                    <li><a href="leaderboard.php">Leaderboard</a></li>
+                    <li><a href="add_drink.php">Lägg till dryck</a></li>
+                    <li><a href="user_list.php">Kolla alla användare</a></li>
+                    <li><a href="loggaut.php">Logga ut</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
 
     <!-- Main Content -->
     <main>
-    <div class="register-submit">
-        <h2>Registrering</h2>
-        <p><?php echo htmlspecialchars($message); ?></p>
+        <div class="register-submit">
+            <h2>Registrering</h2>
+            <p><?= htmlspecialchars($message) ?></p>
 
-        <?php if ($success): ?>
-            <a href="loggain.php">Logga in här</a>
-        <?php else: ?>
-            <a href="registrera.php">Försök igen</a>
-        <?php endif; ?>
-    </div>
-</main>
+            <?php if ($success): ?>
+                <a href="loggain.php">Logga in här</a>
+            <?php else: ?>
+                <a href="registrera.php">Försök igen</a>
+            <?php endif; ?>
+        </div>
+    </main>
 
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 Promille Tracker</p>
     </footer>
-        <script>
-            function toggleDropdown() {
-            const dropdown = document.querySelector(".dropdown");
-            dropdown.classList.toggle("show");
+
+    <script>
+        function toggleDropdown() {
+            document.querySelector(".dropdown").classList.toggle("show");
         }
     </script>
 </body>

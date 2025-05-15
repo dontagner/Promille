@@ -1,16 +1,8 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "promille";
+require_once 'func.php';  // Inkluderar sessionstart och getDBConnection()
 
-// Anslut till databasen
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Kunde inte ansluta: " . $conn->connect_error);
-}
+$conn = getDBConnection();
 
-// Uppdaterad SQL-fråga för att inkludera team
 $sql = "SELECT u.namn, p.promille, u.team
         FROM tbluser u
         JOIN tblpromille p ON u.id = p.userid
@@ -18,7 +10,7 @@ $sql = "SELECT u.namn, p.promille, u.team
 
 $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
+if ($result && $result->num_rows > 0) {
     $rank = 1; // Placeringsräknare
     while ($row = $result->fetch_assoc()) {
         $namn = htmlspecialchars($row['namn']);
