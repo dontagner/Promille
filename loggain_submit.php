@@ -80,7 +80,6 @@ $conn->close();
         <p><?php echo htmlspecialchars($message); ?></p>
 
         <?php if ($login_success): ?>
-            <a href="home.php">Till startsidan</a>
             <a href="leaderboard.php">Till leaderboarden</a>
             <a href="loggaut.php">Logga ut</a>
         <?php else: ?>
