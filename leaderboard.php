@@ -1,9 +1,5 @@
 <?php
 session_start();
-if (!isset($_SESSION['userid'])) {
-    header("Location: loggain.php");
-    exit;
-}
 ?>
 <!DOCTYPE html>
 <html lang="sv">
@@ -73,7 +69,11 @@ if (!isset($_SESSION['userid'])) {
                 <li><a href="leaderboard.php">Leaderboard</a></li>
                 <li><a href="add_drink.php">Lägg till dryck</a></li>
                 <li><a href="user_list.php">Kolla alla användare</a></li>
-                <li><a href="loggaut.php">Logga ut</a></li>
+                <?php if (isset($_SESSION['userid'])): ?>
+                        <li><a href="loggaut.php">Logga ut</a></li>
+                    <?php else: ?>
+                        <li><a href="loggain.php">Logga in</a></li>
+                    <?php endif; ?>
             </ul>
         </div>
     </div>

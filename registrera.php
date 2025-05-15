@@ -16,7 +16,11 @@
                 <li><a href="leaderboard.php">Leaderboard</a></li>
                 <li><a href="add_drink.php">Lägg till dryck</a></li>
                 <li><a href="user_list.php">Kolla alla användare</a></li>
-                <li><a href="loggaut.php">Logga ut</a></li>
+                <?php if (isset($_SESSION['userid'])): ?>
+                        <li><a href="loggaut.php">Logga ut</a></li>
+                    <?php else: ?>
+                        <li><a href="loggain.php">Logga in</a></li>
+                    <?php endif; ?>
             </ul>
         </div>
     </div>
@@ -45,8 +49,12 @@
                 <option value="Aiya Napa">Team Aiya Napa</option>
             </select>
 
+            <label for="regcode">Registreringskod:</label>
+            <input type="password" id="regcode" name="regcode" required>
+
             <input type="submit" value="Registrera">
         </form>
+
     </div>
 </main>
 
