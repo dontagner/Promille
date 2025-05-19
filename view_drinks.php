@@ -74,6 +74,9 @@ $result = $stmt->get_result();
                             <th>Alkohol%</th>
                             <th>Volym (ml)</th>
                             <th>Tid</th>
+                            <?php if ($userid_to_view == $_SESSION['userid']): ?>
+                                <th>Ta bort</th>
+                            <?php endif; ?>
                         </tr>
                     </thead>
                     <tbody>
@@ -83,6 +86,14 @@ $result = $stmt->get_result();
                                 <td><?php echo htmlspecialchars($row['alcoholpercent']); ?></td>
                                 <td><?php echo htmlspecialchars($row['volume_ml']); ?></td>
                                 <td><?php echo htmlspecialchars($row['drinktimestamp']); ?></td>
+                                <?php if ($userid_to_view == $_SESSION['userid']): ?>
+                                    <td>
+                                        <form method="POST" action="remove_drink.php" style="margin:0;">
+                                            <input type="hidden" name="drinktimestamp" value="<?php echo htmlspecialchars($row['drinktimestamp']); ?>">
+                                            <button type="submit" class="remove-btn" onclick="return confirm('Ta bort denna dryck?')">Ta bort</button>
+                                        </form>
+                                    </td>
+                                <?php endif; ?>
                             </tr>
                         <?php endwhile; ?>
                     </tbody>

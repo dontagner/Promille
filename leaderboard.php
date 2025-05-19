@@ -14,6 +14,7 @@ session_start();
     dropdown.classList.toggle("show");
 }
 
+
     function updatePromille() {
         const xhr = new XMLHttpRequest();
         xhr.open("GET", "update_promille.php", true);
@@ -48,14 +49,30 @@ session_start();
         xhr.send();
     }
 
-    window.onload = function () {
-        updatePromille(); // Uppdatera promille direkt vid sidladdning
-        loadLeaderboard();
-        setInterval(() => {
-            updatePromille();
-            loadLeaderboard();
-        }, 30000); // Kör var 30:e sekund
+
+
+function loadTeamLeaderboard() {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "get_team_leaderboard.php", true);
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            document.getElementById("team-leaderboard-body").innerHTML = xhr.responseText;
+        }
     };
+    xhr.send();
+}
+
+window.onload = function () {
+    updatePromille();
+    loadLeaderboard();
+    loadTeamLeaderboard();
+    setInterval(() => {
+        updatePromille();
+        loadLeaderboard();
+        loadTeamLeaderboard();
+    }, 30000);
+};
+    
     </script>
 </head>
 <body>
@@ -100,6 +117,24 @@ session_start();
 
             <p id="last-updated" class="last-updated">Senast uppdaterad: laddar...</p>
         </div>
+
+
+
+            <!-- Team Leaderboard -->
+    <div class="team-leaderboard">
+        <h2>Team-leaderboard</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Team</th>
+                    <th>Snittpromille</th>
+                </tr>
+            </thead>
+            <tbody id="team-leaderboard-body">
+                <tr><td colspan="2">Laddar data...</td></tr>
+            </tbody>
+        </table>
+    </div>
     </main>
 
     <!-- Footer -->

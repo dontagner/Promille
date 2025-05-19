@@ -1,26 +1,33 @@
 <?php
-require_once 'func.php'; // Startar session + ger mysqli-anslutning
+require_once 'func.php'; // Inkluderar hjälpfunktioner och startar session samt databasanslutning
 
-$conn = getDBConnection();
+$conn = getDBConnection(); // Hämtar aktiv databasanslutning
 
+// Hämta inmatade värden från formuläret, om de finns, annars sätts de till tomma strängar
 $namn = $_POST['namn'] ?? '';
 $password = $_POST['password'] ?? '';
 
-$login_success = false;
-$message = "";
+$login_success = false; // Flagga för att indikera om inloggning lyckades
+$message = ""; // Meddelande som visas till användaren
 
+// Kontrollera att både användarnamn och lösenord är ifyllda
 if ($namn && $password) {
+    // Förbered SQL-fråga för att hämta användare med angivet namn
     $sql = "SELECT id, password, namn, userlevel FROM tbluser WHERE namn = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $namn);
     $stmt->execute();
-    $stmt->store_result();
+    $stmt->store_result(); // Lagra resultatet för att kunna kontrollera om någon rad hittades
 
+    // Om minst en rad hittades, dvs användaren finns
     if ($stmt->num_rows > 0) {
+        // Hämta data från den hittade raden
         $stmt->bind_result($user_id, $hashed_password, $user_namn, $user_level);
         $stmt->fetch();
 
+        // Kontrollera om lösenordet stämmer (använder säkert hash-verktyg)
         if (password_verify($password, $hashed_password)) {
+            // Lösenordet är korrekt, spara relevant info i sessionen
             $_SESSION['userid'] = $user_id;
             $_SESSION['namn'] = $user_namn;
             $_SESSION['userlevel'] = $user_level;
@@ -28,19 +35,23 @@ if ($namn && $password) {
             $login_success = true;
             $message = "Inloggning lyckades!";
         } else {
+            // Fel lösenord
             $message = "Felaktigt lösenord. Försök igen.";
         }
     } else {
+        // Användarnamnet finns inte i databasen
         $message = "Användaren finns inte. Försök igen.";
     }
 
-    $stmt->close();
+    $stmt->close(); // Stänger statement
 } else {
+    // Något fält är tomt
     $message = "Vänligen fyll i både användarnamn och lösenord.";
 }
 
-$conn->close();
+$conn->close(); // Stänger databasanslutningen
 ?>
+
 <!DOCTYPE html>
 <html lang="sv">
 <head>

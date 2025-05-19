@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Värd: 127.0.0.1
--- Tid vid skapande: 19 maj 2025 kl 11:14
+-- Tid vid skapande: 19 maj 2025 kl 13:15
 -- Serverversion: 10.4.32-MariaDB
 -- PHP-version: 8.2.12
 
@@ -41,52 +41,11 @@ CREATE TABLE `tbldrinklog` (
 --
 
 INSERT INTO `tbldrinklog` (`drinkid`, `userid`, `drinktype`, `alcoholpercent`, `volume_ml`, `drinktimestamp`) VALUES
-(1, 1, 'Öl', 10.5, 500, '2025-04-24 08:47:08'),
-(2, 1, 'Öl', 55, 200, '2025-04-24 08:56:05'),
-(3, 1, 'Öl', 22, 222, '2025-04-24 08:59:17'),
-(4, 1, 'Öl', 50, 2000, '2025-04-24 09:09:44'),
-(5, 1, 'Öl', 0.9, 1, '2025-04-24 10:49:46'),
-(6, 2, 'Jäger', 35, 120, '2025-04-24 11:01:16'),
-(7, 1, '1', 1, 1, '2025-04-25 10:53:17'),
-(8, 1, 'Öl', 10.5, 500, '2025-04-25 10:56:51'),
-(9, 1, 'Öl', 40, 100, '2025-04-25 10:59:42'),
-(10, 1, 'Öl', 11, 4000, '2025-04-25 11:02:38'),
-(11, 2, 'Öl', 19.9, 200, '2025-04-25 11:07:35'),
-(12, 2, 'Öl', 22, 100, '2025-04-25 11:08:31'),
-(13, 2, 'Öl', 10, 400, '2025-04-25 11:09:32'),
-(14, 2, 'Öl', 10, 1, '2025-04-25 11:13:02'),
-(15, 2, '1', 1, 1, '2025-04-25 11:13:33'),
-(16, 2, 'Öl', 70, 5000, '2025-04-25 11:15:14'),
-(17, 3, 'Öl', 11, 10000, '2025-04-25 11:25:16'),
-(18, 1, 'Öl', 33, 100, '2025-04-28 11:59:04'),
-(19, 1, '100', 100, 100, '2025-04-28 12:01:17'),
-(20, 4, 'ölööl', 50, 1000, '2025-04-28 12:05:10'),
-(21, 5, 'Öl', 100, 1000, '2025-04-28 12:06:05'),
-(22, 5, 'Öl', 1, 1000, '2025-04-28 12:07:37'),
-(23, 4, 'Öl', 20, 200, '2025-04-28 12:38:35'),
-(24, 4, 'Öl', 100, 1000, '2025-04-28 12:38:58'),
-(25, 4, 'Öl', 10, 700, '2025-05-08 07:25:09'),
-(26, 6, 'Cider (Smirnoff ice)', 4.5, 330, '2025-05-08 07:26:46'),
-(27, 6, 'Ren Alkohol', 100, 900, '2025-05-08 07:32:28'),
-(28, 4, 'Öl', 10, 1000, '2025-05-08 08:56:44'),
-(29, 4, 'Ren Alkohol', 100, 1000, '2025-05-09 07:52:43'),
-(30, 4, 'Annat', 10, 10000, '2025-05-09 08:01:34'),
-(31, 7, 'Cider', 10, 200, '2025-05-09 08:56:34'),
-(32, 7, 'Cider', 5.3, 500, '2025-05-09 10:23:13'),
-(33, 7, 'Cider', 5.2, 100, '2025-05-09 10:23:23'),
-(34, 11, 'Shot', 40, 60, '2025-05-09 10:40:09'),
-(35, 12, 'Shot', 40, 60, '2025-05-09 11:05:02'),
-(36, 12, 'Annat', 100, 100000, '2025-05-09 11:05:25'),
-(37, 4, 'Cider', 5.4, 330, '2025-05-12 08:42:50'),
-(38, 4, 'Cider', 5.4, 330, '2025-05-12 08:44:17'),
-(39, 11, 'Cider', 5.5, 330, '2025-05-12 08:50:24'),
-(40, 11, 'Cider', 5.5, 330, '2025-05-12 08:50:34'),
-(41, 11, 'Cider', 5.5, 330, '2025-05-12 08:50:56'),
-(42, 4, 'Öl', 10, 500, '2025-05-15 08:36:02'),
-(43, 4, 'Cider', 12, 1000, '2025-05-15 08:46:34'),
-(44, 14, 'Öl', 5, 500, '2025-05-15 08:52:05'),
-(45, 14, 'Cider', 5, 500, '2025-05-15 09:15:37'),
-(46, 16, 'Shot', 40, 60, '2025-05-15 09:40:43');
+(47, 15, 'Cider', 5, 330, '2025-05-19 10:50:26'),
+(48, 15, 'Öl', 5.4, 330, '2025-05-19 10:51:57'),
+(49, 16, 'Shot', 40, 60, '2025-05-19 10:55:00'),
+(50, 16, 'Shot', 35, 60, '2025-05-19 10:55:45'),
+(51, 16, 'Cider', 1, 100, '2025-05-19 10:58:28');
 
 -- --------------------------------------------------------
 
@@ -105,19 +64,8 @@ CREATE TABLE `tblpromille` (
 --
 
 INSERT INTO `tblpromille` (`userid`, `promille`, `updated_at`) VALUES
-(4, 0, '2025-05-19 11:12:42'),
-(5, 0, '2025-05-19 11:12:42'),
-(6, 0, '2025-05-19 11:12:43'),
-(7, 0, '2025-05-19 11:12:43'),
-(8, 0, '2025-05-19 11:12:43'),
-(9, 0, '2025-05-19 11:12:43'),
-(10, 0, '2025-05-19 11:12:43'),
-(11, 0, '2025-05-19 11:12:43'),
-(12, 0, '2025-05-19 11:12:43'),
-(13, 0, '2025-05-19 11:12:43'),
-(14, 0, '2025-05-19 11:12:43'),
-(15, 0, '2025-05-19 11:12:43'),
-(16, 0, '2025-05-19 11:12:43');
+(15, 0.423584, '2025-05-19 13:15:15'),
+(16, 0.651658, '2025-05-19 13:15:15');
 
 -- --------------------------------------------------------
 
@@ -141,19 +89,8 @@ CREATE TABLE `tbluser` (
 --
 
 INSERT INTO `tbluser` (`id`, `namn`, `password`, `weight`, `height`, `alkoholvolym`, `userlevel`, `team`) VALUES
-(4, 'Elton Tagner', '$2y$10$7FqQdGB5Boesydf8/hhWXOVh/3zk6f1Ca4zJPumoPoW3LL4jYA1OG', 82, 182, 0, 10, ''),
-(5, 'Melker Knickedik', '$2y$10$tz5AazbTq/0Ggp6qa4yaGu2B79I5WhGKDOYtexs555jUcFHctNkvy', 37, 191, 0, 10, ''),
-(6, 'Vendel Seiver', '$2y$10$eGEQjze78ftASJi1ZKi.peiD7KKHbaHB/RNm/KDxdmKBESszVMT7u', 75, 180, 0, 10, ''),
-(7, 'Mio Gullybrand', '$2y$10$y29M1TPcwpTdnj3sKMu9me3TjX1P6XuBk5QykJxO2v/0MHtEctYES', 98, 185, 0, 10, ''),
-(8, 'Melwin', '$2y$10$QnFNRu3BqTK4Yxc8SGgB1u/yDzbxg0YYBNaYnLf/p/uFtwp1AwMc2', 70, 210, 0, 10, ''),
-(9, 'Melwin Ataturk', '$2y$10$4308mrWYkrhht4wFuntPNuXpm8CtD88/OKexyRuthFha5xuizKnjC', 120, 240, 0, 10, ''),
-(10, 'Melwin Özdemir Aydin Yilmaz Ataturk', '$2y$10$8NH3/g.Q7/34Ld7m5oEDvugfBpOdMGiKsabryFe4pyZO3UMZq1PtC', 320, 240, 0, 10, 'magaluf'),
-(11, 'Hubert Yilmaz', '$2y$10$bu14c0ZsMc3kPK8DNJX8.uo.41hL9CbZPT7n1xN6vlfa/NlRQ4Uxi', 4, 30, 0, 10, 'Aiya Napa'),
-(12, 'Gigantimus', '$2y$10$.bEkKtDwqsw6gfKFnJjcgOX6qVpmKaIjWn7KvYKQpgsCPCoflVTv6', 9000, 2400, 0, 10, 'Magaluf'),
-(13, 'Gigantimus', '$2y$10$A57v84ogiZwxMfJi4W7qxeU4mH5JwqRt.dszYWH92Likw2VDYwo8K', 9000, 2400, 0, 10, 'Magaluf'),
-(14, 'Linus Åkesson', '$2y$10$nUoSqacSwCU6dbGVuUqTvuaFjdyCxUWOW/BbIcdy.rpOp0mHyUs46', 76, 178, 0, 10, 'Aiya Napa'),
-(15, 'Don Taga', '$2y$10$0lHltaMi0d7KjCt0VfOgvuG3HksCO0XsvDOg7CDqtJu3No/A.wcaS', 100, 150, 0, 10, 'Magaluf'),
-(16, 'David', '$2y$10$sRuIQmsr9.TUxz4Fo9k3uuP6F3Rb9hBQ0/5yKfbvPkmU.dDbnLSIK', 69, 170, 0, 10, 'Magaluf');
+(15, 'Elton Tagner', '$2y$10$1zU3AknuMyfhNq4VT5beDO4LJIbAlSioO8mXU9bgyNjTtQJyn3bFS', 82, 183, 0, 10, 'Magaluf'),
+(16, 'Linus Åkesson', '$2y$10$oz3QEZSKcXw/z3S3xoR5OOoceK8FT8HfwI5ZQovAWMpqhOHlJfYba', 76, 178, 0, 10, 'Aiya Napa');
 
 --
 -- Index för dumpade tabeller
@@ -185,7 +122,7 @@ ALTER TABLE `tbluser`
 -- AUTO_INCREMENT för tabell `tbldrinklog`
 --
 ALTER TABLE `tbldrinklog`
-  MODIFY `drinkid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `drinkid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT för tabell `tbluser`

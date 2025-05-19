@@ -30,7 +30,7 @@
     <div class="register-form">
         <h2>Registrera dig</h2>
         <form action="registrera_submit.php" method="POST">
-            <label for="namn">Namn:</label>
+            <label for="namn">Förnamn och Efternamn:</label>
             <input type="text" id="namn" name="namn" required>
 
             <label for="password">Lösenord:</label>
