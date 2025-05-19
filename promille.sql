@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Värd: 127.0.0.1
--- Tid vid skapande: 15 maj 2025 kl 10:24
+-- Tid vid skapande: 19 maj 2025 kl 11:14
 -- Serverversion: 10.4.32-MariaDB
 -- PHP-version: 8.2.12
 
@@ -81,7 +81,12 @@ INSERT INTO `tbldrinklog` (`drinkid`, `userid`, `drinktype`, `alcoholpercent`, `
 (38, 4, 'Cider', 5.4, 330, '2025-05-12 08:44:17'),
 (39, 11, 'Cider', 5.5, 330, '2025-05-12 08:50:24'),
 (40, 11, 'Cider', 5.5, 330, '2025-05-12 08:50:34'),
-(41, 11, 'Cider', 5.5, 330, '2025-05-12 08:50:56');
+(41, 11, 'Cider', 5.5, 330, '2025-05-12 08:50:56'),
+(42, 4, 'Öl', 10, 500, '2025-05-15 08:36:02'),
+(43, 4, 'Cider', 12, 1000, '2025-05-15 08:46:34'),
+(44, 14, 'Öl', 5, 500, '2025-05-15 08:52:05'),
+(45, 14, 'Cider', 5, 500, '2025-05-15 09:15:37'),
+(46, 16, 'Shot', 40, 60, '2025-05-15 09:40:43');
 
 -- --------------------------------------------------------
 
@@ -100,16 +105,19 @@ CREATE TABLE `tblpromille` (
 --
 
 INSERT INTO `tblpromille` (`userid`, `promille`, `updated_at`) VALUES
-(4, 0.29672, '2025-05-12 12:05:52'),
-(5, 0, '2025-05-12 12:05:52'),
-(6, 0, '2025-05-12 12:05:52'),
-(7, 0, '2025-05-12 12:05:52'),
-(8, 0, '2025-05-12 12:05:52'),
-(9, 0, '2025-05-12 12:05:52'),
-(10, 0, '2025-05-12 12:05:52'),
-(11, 15.6058, '2025-05-12 12:05:52'),
-(12, 0, '2025-05-12 12:05:52'),
-(13, 0, '2025-05-12 12:05:52');
+(4, 0, '2025-05-19 11:12:42'),
+(5, 0, '2025-05-19 11:12:42'),
+(6, 0, '2025-05-19 11:12:43'),
+(7, 0, '2025-05-19 11:12:43'),
+(8, 0, '2025-05-19 11:12:43'),
+(9, 0, '2025-05-19 11:12:43'),
+(10, 0, '2025-05-19 11:12:43'),
+(11, 0, '2025-05-19 11:12:43'),
+(12, 0, '2025-05-19 11:12:43'),
+(13, 0, '2025-05-19 11:12:43'),
+(14, 0, '2025-05-19 11:12:43'),
+(15, 0, '2025-05-19 11:12:43'),
+(16, 0, '2025-05-19 11:12:43');
 
 -- --------------------------------------------------------
 
@@ -142,7 +150,10 @@ INSERT INTO `tbluser` (`id`, `namn`, `password`, `weight`, `height`, `alkoholvol
 (10, 'Melwin Özdemir Aydin Yilmaz Ataturk', '$2y$10$8NH3/g.Q7/34Ld7m5oEDvugfBpOdMGiKsabryFe4pyZO3UMZq1PtC', 320, 240, 0, 10, 'magaluf'),
 (11, 'Hubert Yilmaz', '$2y$10$bu14c0ZsMc3kPK8DNJX8.uo.41hL9CbZPT7n1xN6vlfa/NlRQ4Uxi', 4, 30, 0, 10, 'Aiya Napa'),
 (12, 'Gigantimus', '$2y$10$.bEkKtDwqsw6gfKFnJjcgOX6qVpmKaIjWn7KvYKQpgsCPCoflVTv6', 9000, 2400, 0, 10, 'Magaluf'),
-(13, 'Gigantimus', '$2y$10$A57v84ogiZwxMfJi4W7qxeU4mH5JwqRt.dszYWH92Likw2VDYwo8K', 9000, 2400, 0, 10, 'Magaluf');
+(13, 'Gigantimus', '$2y$10$A57v84ogiZwxMfJi4W7qxeU4mH5JwqRt.dszYWH92Likw2VDYwo8K', 9000, 2400, 0, 10, 'Magaluf'),
+(14, 'Linus Åkesson', '$2y$10$nUoSqacSwCU6dbGVuUqTvuaFjdyCxUWOW/BbIcdy.rpOp0mHyUs46', 76, 178, 0, 10, 'Aiya Napa'),
+(15, 'Don Taga', '$2y$10$0lHltaMi0d7KjCt0VfOgvuG3HksCO0XsvDOg7CDqtJu3No/A.wcaS', 100, 150, 0, 10, 'Magaluf'),
+(16, 'David', '$2y$10$sRuIQmsr9.TUxz4Fo9k3uuP6F3Rb9hBQ0/5yKfbvPkmU.dDbnLSIK', 69, 170, 0, 10, 'Magaluf');
 
 --
 -- Index för dumpade tabeller
@@ -174,13 +185,13 @@ ALTER TABLE `tbluser`
 -- AUTO_INCREMENT för tabell `tbldrinklog`
 --
 ALTER TABLE `tbldrinklog`
-  MODIFY `drinkid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `drinkid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT för tabell `tbluser`
 --
 ALTER TABLE `tbluser`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
