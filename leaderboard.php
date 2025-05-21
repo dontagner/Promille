@@ -105,21 +105,21 @@ window.onload = function () {
     <main>
         <div class="leaderboard">
             <h2>Leaderboard</h2>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Placering</th>
-                        <th>Namn</th>
-                        <th>Promille</th>
-                        <th>Team</th>
-                    </tr>
-                </thead>
-                <tbody id="leaderboard-body">
-                    <tr><td colspan="4">Laddar data...</td></tr>
-                </tbody>
-            </table>
-
+            <div class="leaderboard-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Placering</th>
+                            <th>Namn</th>
+                            <th>Promille</th>
+                            <th>Team</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboard-body">
+                        <tr><td colspan="4">Laddar data...</td></tr>
+                    </tbody>
+                </table>
+            </div>
             <p id="last-updated" class="last-updated">Senast uppdaterad: laddar...</p>
         </div>
 

@@ -41,13 +41,8 @@ Call-to-Action Montserrat (Sharp and attention-grabbing)
 
 
 
-/* Allmänna inställningar */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-}
+
+
 
 /* Header */
 /* Allmänna inställningar */
@@ -55,7 +50,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
+    background-color: #061e31;
 }
 
 
@@ -325,6 +320,24 @@ radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1
     .leaderboard table td {
         font-size: 1rem;
         padding: 10px;
+    }
+}
+
+.leaderboard-scroll {
+    width: 100%;
+    overflow-x: unset; /* Default: no scroll on large screens */
+    white-space: normal;
+}
+
+@media (max-width: 768px) {
+    .leaderboard-scroll {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    .leaderboard-scroll table {
+        min-width: 500px; /* Adjust as needed for your columns */
+        width: max-content;
     }
 }
 
@@ -840,14 +853,6 @@ radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1
     color: #f4a261; /* Orange text vid hover */
 }
 
-
-
-
-
-
-
-
-
 /* Registrera Submit-specifik styling */
 .register-submit {
     max-width: 600px;
@@ -898,8 +903,6 @@ radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1
 .register-submit a:active {
     transform: scale(0.95); /* Liten krympning vid klick */
 }
-
-
 
 
 
@@ -1255,3 +1258,7 @@ footer {
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
 
 }
+
+
+
+
