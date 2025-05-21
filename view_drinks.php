@@ -90,7 +90,7 @@ $result = $stmt->get_result();
                                 <td><?php echo htmlspecialchars($row['drinktype']); ?></td>
                                 <td><?php echo htmlspecialchars($row['alcoholpercent']); ?></td>
                                 <td><?php echo htmlspecialchars($row['volume_ml']); ?></td>
-                                <td><?php echo htmlspecialchars($row['drinktimestamp']); ?></td>
+                                <td class="drink-time"><?php echo htmlspecialchars($row['drinktimestamp']); ?></td>
                                 <?php if ($userid_to_view == $_SESSION['userid']): ?>
                                     <td>
                                         <form method="POST" action="remove_drink.php" style="margin:0;">
@@ -124,6 +124,12 @@ $result = $stmt->get_result();
             const dropdown = document.querySelector(".dropdown");
             dropdown.classList.toggle("show");
         }
+
+        document.querySelectorAll('.drink-time').forEach(function(td) {
+            const utc = td.textContent.trim();
+            const local = new Date(utc.replace(' ', 'T') + 'Z');
+            td.textContent = local.toLocaleString();
+        });
     </script>
 </body>
 </html>

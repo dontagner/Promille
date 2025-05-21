@@ -5,8 +5,8 @@ if (session_status() == PHP_SESSION_NONE) {
 
 function getDBConnection() {
     $host = "localhost";
-    $dbname = "ck1ffa1s8_promille";
-    $username = "ck1ffa1s8_promille";
+    $dbname = "promille";
+    $username = "root";
     $password = "";
 
     $conn = new mysqli($host, $username, $password, $dbname);

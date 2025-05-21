@@ -90,5 +90,15 @@ if (!isset($_SESSION['userid'])) {
             dropdown.classList.toggle("show");
         }
     </script>
+<script>
+var nowUTC = new Date().toISOString().slice(0, 19).replace('T', ' ');
+// Här kan du t.ex. sätta värdet i ett dolt formulärfält:
+document.addEventListener('DOMContentLoaded', function() {
+    var utcInput = document.getElementById('utc_time');
+    if (utcInput) {
+        utcInput.value = nowUTC;
+    }
+});
+</script>
 </body>
 </html>

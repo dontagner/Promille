@@ -14,12 +14,13 @@ $userid = $_SESSION['userid'];
 $drinktype = $_POST['drinktype'];
 $alcoholpercent = $_POST['alcoholpercent'];
 $volume_ml = $_POST['volume_ml'];
+$utc_time = (new DateTime('now', new DateTimeZone('UTC')))->format('Y-m-d H:i:s');
 
 // Förbered SQL-sats för att lägga till drycken i loggen
-$sql = "INSERT INTO tbldrinklog (userid, drinktype, alcoholpercent, volume_ml)
-        VALUES (?, ?, ?, ?)";
+$sql = "INSERT INTO tbldrinklog (userid, drinktype, alcoholpercent, volume_ml, drinktimestamp)
+        VALUES (?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("isdd", $userid, $drinktype, $alcoholpercent, $volume_ml); // i = int, s = string, d = double
+$stmt->bind_param("isdds", $userid, $drinktype, $alcoholpercent, $volume_ml, $utc_time); // i = int, s = string, d = double
 $success = $stmt->execute(); // Kör frågan
 
 // Skapa ett meddelande beroende på om insättningen lyckades
