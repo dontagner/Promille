@@ -38,7 +38,7 @@ session_start();
     <div class="login-form">
         <h2>Logga in</h2>
         <form action="loggain_submit.php" method="POST">
-            <label for="namn">Namn:</label>
+            <label for="namn">Förnamn och Efternamn:</label>
             <input type="text" id="namn" name="namn" required>
 
             <label for="password">Lösenord:</label>
