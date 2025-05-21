@@ -53,7 +53,7 @@ $result = $stmt->get_result();
             <div class="dropdown">
                 <button class="menu-toggle" onclick="toggleDropdown()">☰ Meny</button>
                 <ul class="dropdown-menu">
-                    <li><a href="leaderboard.php">Leaderboard</a></li>
+                    <li><a href="index.php">Leaderboard</a></li>
                     <li><a href="add_drink.php">Lägg till dryck</a></li>
                     <li><a href="user_list.php">Kolla alla användare</a></li>
                     <?php if (isset($_SESSION['userid'])): ?>

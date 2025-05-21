@@ -81,7 +81,7 @@ $conn->close();
         <div class="dropdown">
             <button class="menu-toggle" onclick="toggleDropdown()">☰ Meny</button>
             <ul class="dropdown-menu">
-                <li><a href="leaderboard.php">Leaderboard</a></li>
+                <li><a href="index.php">Leaderboard</a></li>
                 <li><a href="add_drink.php">Lägg till dryck</a></li>
                 <li><a href="user_list.php">Kolla alla användare</a></li>
                 <?php if (isset($_SESSION['userid'])): ?>
@@ -103,7 +103,7 @@ $conn->close();
         <?php if ($success): ?>
             <p><a href="add_drink.php">Lägg till en till dryck</a></p>
             <p><a href="view_drinks.php">Visa mina tidigare drycker</a></p>
-            <p><a href="leaderboard.php">Gå till leaderboarden</a></p>
+            <p><a href="index.php">Gå till leaderboarden</a></p>
         <?php else: ?>
             <p><a href="add_drink.php">Försök igen</a></p>
         <?php endif; ?>

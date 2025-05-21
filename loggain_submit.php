@@ -73,7 +73,7 @@ $conn->close(); // Stänger databasanslutningen
             <div class="dropdown">
                 <button class="menu-toggle" onclick="toggleDropdown()">☰ Meny</button>
                 <ul class="dropdown-menu">
-                    <li><a href="leaderboard.php">Leaderboard</a></li>
+                    <li><a href="index.php">Leaderboard</a></li>
                     <li><a href="add_drink.php">Lägg till dryck</a></li>
                     <li><a href="user_list.php">Kolla alla användare</a></li>
                     <?php if (isset($_SESSION['userid'])): ?>
@@ -93,7 +93,7 @@ $conn->close(); // Stänger databasanslutningen
             <p><?= htmlspecialchars($message) ?></p>
 
             <?php if ($login_success): ?>
-                <a href="leaderboard.php">Till leaderboarden</a>
+                <a href="index.php">Till leaderboarden</a>
                 <a href="loggaut.php">Logga ut</a>
             <?php else: ?>
                 <a href="loggain.php">Försök igen</a>
