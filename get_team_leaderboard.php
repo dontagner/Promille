@@ -2,14 +2,14 @@
 require_once 'func.php';
 $conn = getDBConnection();
 
-$allTeams = ['Aiya Napa', 'Magaluf'];
+$allTeams = ['Ayia  Napa', 'Magaluf'];
 $teamData = [];
 
 // Hämta snittpromille för båda teamen
 $sql = "SELECT u.team, AVG(p.promille) AS avg_promille
         FROM tbluser u
         JOIN tblpromille p ON u.id = p.userid
-        WHERE u.team IN ('Aiya Napa', 'Magaluf')
+        WHERE u.team IN ('Ayia Napa', 'Magaluf')
         GROUP BY u.team";
 $result = $conn->query($sql);
 

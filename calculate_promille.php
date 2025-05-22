@@ -31,7 +31,7 @@ function calculatePromille($userid, $conn) {
     // 2. Hämta alla drycker som druckits de senaste 6 timmarna
     $sql = "SELECT alcoholpercent, volume_ml, drinktimestamp
             FROM tbldrinklog 
-            WHERE userid = ? AND drinktimestamp >= UTC_TIMESTAMP() - INTERVAL 6 HOUR";
+            WHERE userid = ? AND drinktimestamp >= UTC_TIMESTAMP() - INTERVAL 24 HOUR";
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $userid);

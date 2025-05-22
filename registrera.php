@@ -51,7 +51,7 @@
             <select id="team" name="team" required>
                 <option value="">-- Välj ett team --</option>
                 <option value="Magaluf">Team Magaluf</option>
-                <option value="Aiya Napa">Team Aiya Napa</option>
+                <option value="Ayia Napa">Team Ayia Napa</option>
             </select>
 
             <label for="regcode">Registreringskod:</label>
