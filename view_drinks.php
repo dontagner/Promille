@@ -95,7 +95,7 @@ $result = $stmt->get_result();
                                     <td>
                                         <form method="POST" action="remove_drink.php" style="margin:0;">
                                             <input type="hidden" name="drinktimestamp" value="<?php echo htmlspecialchars($row['drinktimestamp']); ?>">
-                                            <button type="submit" class="remove-btn" onclick="return confirm('Ta bort denna dryck?')">Ta bort</button>
+                                            <button type="submit" class="remove-btn">Ta bort</button>
                                         </form>
                                     </td>
                                 <?php endif; ?>

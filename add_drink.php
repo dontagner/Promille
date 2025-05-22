@@ -68,10 +68,10 @@ if (!isset($_SESSION['userid'])) {
             </div>
 
             <label for="alcoholpercent">Alkoholhalt (%):</label>
-            <input type="number" id="alcoholpercent" name="alcoholpercent" step="0.1" required><br>
+            <input type="number" id="alcoholpercent" name="alcoholpercent" step="0.1" min="0" max="70.0" required><br>
 
             <label for="volume_ml">Volym (ml):</label>
-            <input type="number" id="volume_ml" name="volume_ml" step="0.1" required><br>
+            <input type="number" id="volume_ml" name="volume_ml" step="0.1"  min="1" max="2000" required><br>
 
             <input type="submit" value="Spara dryck">
         </form>
