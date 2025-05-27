@@ -349,7 +349,6 @@ radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1
 
 
 
-
 /* Formulär-specifik styling */
 .add-drink-form {
     max-width: 600px;
@@ -1097,6 +1096,10 @@ header img {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
+    white-space: normal;
+    word-break: break-word;
+    font-size: 1.1rem;
+    padding: 8px;
 }
 
 .team-day-avg-leaderboard h2 {
@@ -1516,3 +1519,56 @@ footer {
 
 
 
+/* Gör top-promille-leaderboard scrollbar på små skärmar */
+.top-promille-scroll {
+    width: 100%;
+    overflow-x: unset;
+    white-space: normal;
+}
+@media (max-width: 768px) {
+    .top-promille-scroll {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    .top-promille-scroll table {
+        min-width: 500px;
+        width: max-content;
+    }
+}
+
+/* Gör team-day-avg-leaderboard scrollbar på små skärmar */
+.team-day-avg-scroll {
+    width: 100%;
+    overflow-x: unset;
+    white-space: normal;
+}
+@media (max-width: 768px) {
+    .team-day-avg-scroll {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    .team-day-avg-scroll table {
+        min-width: 500px;
+        width: max-content;
+    }
+}
+
+/* Gör team-points-leaderboard scrollbar på små skärmar */
+.team-points-scroll {
+    width: 100%;
+    overflow-x: unset;
+    white-space: normal;
+}
+@media (max-width: 768px) {
+    .team-points-scroll {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    .team-points-scroll table {
+        min-width: 500px;
+        width: max-content;
+    }
+}

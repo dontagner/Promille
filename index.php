@@ -7,7 +7,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Promille leaderboard</title>
-    <link rel="stylesheet" href="style.css"> <!-- Lägg till din CSS-fil här -->
+    <link rel="stylesheet" href="style.css?v=2"> <!-- Lägg till din CSS-fil här -->
     <link rel="icon" type="image/x-icon" href="bilder/favicon/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="bilder/favicon/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="bilder/favicon/favicon-16x16.png">
@@ -207,6 +207,7 @@ window.onload = function () {
 
 <div class="top-promille-leaderboard">
     <h2>Topp 3 promille senaste 24 timmarna</h2>
+    <div class="top-promille-scroll">
     <table>
         <thead>
             <tr>
@@ -220,11 +221,13 @@ window.onload = function () {
             <tr><td colspan="4">Laddar data...</td></tr>
         </tbody>
     </table>
+    </div>
 </div>
 
 
 <div class="team-day-avg-leaderboard">
     <h2>Lagets medelsnittpromille (10:00–10:00)</h2>
+    <div class="team-day-avg-scroll">
     <table>
         <thead>
             <tr>
@@ -236,10 +239,12 @@ window.onload = function () {
             <tr><td colspan="2">Laddar data...</td></tr>
         </tbody>
     </table>
+    </div>
 </div>
 
 <div class="team-points-leaderboard">
     <h2>Lagpoäng</h2>
+    <div class="team-points-scroll">
     <table>
         <thead>
             <tr>
@@ -251,6 +256,7 @@ window.onload = function () {
             <tr><td colspan="2">Laddar data...</td></tr>
         </tbody>
     </table>
+    </div>
 </div>
     </main>
 
