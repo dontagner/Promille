@@ -759,12 +759,6 @@ radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1
 
 
 
-
-
-
-
-
-
 /* Registrera-specifik styling */
 .register-form {
     max-width: 500px;
@@ -978,6 +972,266 @@ header img {
 
 .dropdown.show .dropdown-menu {
     display: block; /* Visa menyn när den är aktiv */
+}
+
+
+
+
+.top-promille-leaderboard {
+    max-width: 900px;
+    margin: 40px auto 0 auto;
+    padding: 20px;
+    border-radius: 16px;
+    font-family: 'Poppins', sans-serif;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.top-promille-leaderboard h2 {
+    text-align: center;
+    color: #ffe15a;
+    text-shadow: 0px 0px 5px #5a4a16;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.top-promille-leaderboard table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin-top: 20px;
+    font-size: 1.1rem;
+}
+
+.top-promille-leaderboard th,
+.top-promille-leaderboard td {
+    padding: 15px;
+    text-align: center;
+    background-color: #f8f9fa;
+    box-shadow: 0 10px 10px rgba(0, 0, 1, 0.05);
+    font-size: 1.3rem;
+    line-height: 1.5;
+}
+
+.top-promille-leaderboard th {
+    background-color: #fdfdfd;
+    color: #0c1f44;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.top-promille-leaderboard tr {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Placering 1 - Guld */
+.top-promille-leaderboard tr.gold td {
+    height: 14vh;
+    background-color: #ffd90000; /* Guld */
+    color: #ffffff;
+    font-weight: bold;
+    text-shadow: 0px 0px 10px #301e03;
+}
+.top-promille-leaderboard tr.gold {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    transform: scale(1.06);
+    transition: transform 0.3s ease;
+    background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #9e7e32 40%, transparent 80%),
+                radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #97772c 62.5%, #96772f 100%);
+}
+
+/* Placering 2 - Silver */
+.top-promille-leaderboard tr.silver td {
+    height: 10vh;
+    background-color: #c0c0c000; /* Silver */
+    color: #ffffff;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px #000000;
+}
+.top-promille-leaderboard tr.silver {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+    background: linear-gradient(
+        45deg,
+        #999 5%,
+        #fff 10%,
+        #ccc 30%,
+        #ddd 50%,
+        #ccc 70%,
+        #fff 80%,
+        #999 95%
+    );
+}
+
+/* Placering 3 - Brons */
+.top-promille-leaderboard tr.bronze td {
+    height: 8vh;
+    background-color: #cd803200; /* Brons */
+    color: #ffffff;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px #000000;
+}
+.top-promille-leaderboard tr.bronze {
+    background: linear-gradient(45deg, #cd7f32, #b87333, #a67c52, #8c7853);
+}
+
+
+
+
+.team-day-avg-leaderboard {
+    max-width: 900px;
+    margin: 40px auto 0 auto;
+    padding: 20px;
+    border-radius: 16px;
+    font-family: 'Poppins', sans-serif;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.team-day-avg-leaderboard h2 {
+    text-align: center;
+    color: #ffe15a;
+    text-shadow: 0px 0px 5px #5a4a16;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.team-day-avg-leaderboard table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin-top: 20px;
+    font-size: 1.1rem;
+}
+
+.team-day-avg-leaderboard th,
+.team-day-avg-leaderboard td {
+    padding: 15px;
+    text-align: center;
+    background-color: #f8f9fa;
+    box-shadow: 0 10px 10px rgba(0, 0, 1, 0.05);
+    font-size: 1.3rem;
+    line-height: 1.5;
+}
+
+.team-day-avg-leaderboard th {
+    background-color: #fdfdfd;
+    color: #0c1f44;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.team-day-avg-leaderboard tr {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Guld för första plats */
+.team-day-avg-leaderboard tr.gold td {
+    height: 14vh;
+    background-color: #ffd90000;
+    color: #ffffff;
+    font-weight: bold;
+    text-shadow: 0px 0px 10px #301e03;
+}
+.team-day-avg-leaderboard tr.gold {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    transform: scale(1.06);
+    transition: transform 0.3s ease;
+    background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #9e7e32 40%, transparent 80%),
+                radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #97772c 62.5%, #96772f 100%);
+}
+
+/* Silver för andra plats */
+.team-day-avg-leaderboard tr.silver td {
+    height: 10vh;
+    background-color: #c0c0c000;
+    color: #ffffff;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px #000000;
+}
+.team-day-avg-leaderboard tr.silver {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+    background: linear-gradient(
+        45deg,
+        #999 5%,
+        #fff 10%,
+        #ccc 30%,
+        #ddd 50%,
+        #ccc 70%,
+        #fff 80%,
+        #999 95%
+    );
+}
+
+
+/* Gör team-points-leaderboard lik de andra tabellerna */
+.team-points-leaderboard {
+    max-width: 900px;
+    margin: 40px auto 0 auto;
+    padding: 20px;
+    border-radius: 16px;
+    font-family: 'Poppins', sans-serif;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.team-points-leaderboard h2 {
+    text-align: center;
+    color: #ffe15a;
+    text-shadow: 0px 0px 5px #5a4a16;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.team-points-leaderboard table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin-top: 20px;
+    font-size: 1.1rem;
+}
+
+.team-points-leaderboard th,
+.team-points-leaderboard td {
+    padding: 15px;
+    text-align: center;
+    background-color: #f8f9fa;
+    box-shadow: 0 10px 10px rgba(0, 0, 1, 0.05);
+    font-size: 1.3rem;
+    line-height: 1.5;
+}
+
+.team-points-leaderboard th {
+    background-color: #fdfdfd;
+    color: #0c1f44;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.team-points-leaderboard tr {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 

@@ -31,6 +31,23 @@ session_start();
         xhr.send();
     }
 
+
+    function loadTeamDayAvg() {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "get_team_day_avg.php", true);
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            document.getElementById("team-day-avg-body").innerHTML = xhr.responseText;
+
+            // Tilldela färger till de två första placeringarna
+            const rows = document.getElementById("team-day-avg-body").querySelectorAll("tr");
+            if (rows[0]) rows[0].classList.add("gold");
+            if (rows[1]) rows[1].classList.add("silver");
+        }
+    };
+    xhr.send();
+}
+
     function loadLeaderboard() {
         const xhr = new XMLHttpRequest();
         xhr.open("GET", "get_leaderboard.php", true);
@@ -54,6 +71,35 @@ session_start();
         xhr.send();
     }
 
+function loadTopPromille() {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "get_top_promille.php", true);
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            const topPromilleBody = document.getElementById("top-promille-body");
+            topPromilleBody.innerHTML = xhr.responseText;
+
+            // Tilldela färger till de tre första placeringarna
+            const rows = topPromilleBody.querySelectorAll("tr");
+            if (rows[0]) rows[0].classList.add("gold");
+            if (rows[1]) rows[1].classList.add("silver");
+            if (rows[2]) rows[2].classList.add("bronze");
+        }
+    };
+    xhr.send();
+}
+
+function loadTeamDayAvg() {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "get_team_day_avg.php", true);
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            document.getElementById("team-day-avg-body").innerHTML = xhr.responseText;
+        }
+    };
+    xhr.send();
+}
+
 
 
 function loadTeamLeaderboard() {
@@ -67,14 +113,32 @@ function loadTeamLeaderboard() {
     xhr.send();
 }
 
+function loadTeamPoints() {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "get_team_points.php", true);
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            document.getElementById("team-points-body").innerHTML = xhr.responseText;
+        }
+    };
+    xhr.send();
+}
+
+// Lägg till i window.onload och setInterval:
 window.onload = function () {
     updatePromille();
     loadLeaderboard();
     loadTeamLeaderboard();
+    loadTopPromille();
+    loadTeamDayAvg();
+    loadTeamPoints();
     setInterval(() => {
         updatePromille();
         loadLeaderboard();
         loadTeamLeaderboard();
+        loadTopPromille();
+        loadTeamDayAvg();
+        loadTeamPoints();
     }, 30000);
 };
 
@@ -140,6 +204,54 @@ window.onload = function () {
             </tbody>
         </table>
     </div>
+
+<div class="top-promille-leaderboard">
+    <h2>Topp 3 promille senaste 24 timmarna</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Placering</th>
+                <th>Namn</th>
+                <th>Högsta promille</th>
+                <th>Team</th>
+            </tr>
+        </thead>
+        <tbody id="top-promille-body">
+            <tr><td colspan="4">Laddar data...</td></tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div class="team-day-avg-leaderboard">
+    <h2>Lagets medelsnittpromille (10:00–10:00)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Team</th>
+                <th>Medelsnittpromille</th>
+            </tr>
+        </thead>
+        <tbody id="team-day-avg-body">
+            <tr><td colspan="2">Laddar data...</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="team-points-leaderboard">
+    <h2>Lagpoäng</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Team</th>
+                <th>Poäng</th>
+            </tr>
+        </thead>
+        <tbody id="team-points-body">
+            <tr><td colspan="2">Laddar data...</td></tr>
+        </tbody>
+    </table>
+</div>
     </main>
 
     <!-- Footer -->

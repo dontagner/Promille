@@ -44,6 +44,37 @@ if ($result && $result->num_rows > 0) {
         }
 
         $stmt->close();
+
+        $stmt_log = $conn->prepare("INSERT INTO tblpromillelog (userid, promille, updated_at) VALUES (?, ?, NOW())");
+        $stmt_log->bind_param("id", $userid, $promille);
+        $stmt_log->execute();
+        $stmt_log->close();
+
+
+        // ...efter att alla användares promille har uppdaterats...
+
+        $teams = ['Ayia Napa', 'Magaluf'];
+        foreach ($teams as $team) {
+            // Hämta snittpromille för laget just nu
+            $sql = "SELECT AVG(p.promille) AS avg_promille
+                    FROM tbluser u
+                    JOIN tblpromille p ON u.id = p.userid
+                    WHERE u.team = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("s", $team);
+            $stmt->execute();
+            $stmt->bind_result($avg_promille);
+            $stmt->fetch();
+            $stmt->close();
+
+            // Spara i loggen
+            $sql_log = "INSERT INTO team_avg_log (team, avg_promille, log_time) VALUES (?, ?, NOW())";
+            $stmt_log = $conn->prepare($sql_log);
+            $stmt_log->bind_param("sd", $team, $avg_promille);
+            $stmt_log->execute();
+            $stmt_log->close();
+}
+
     }
 } else {
     error_log("Inga användare hittades.");

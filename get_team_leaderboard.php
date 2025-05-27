@@ -2,7 +2,7 @@
 require_once 'func.php';
 $conn = getDBConnection();
 
-$allTeams = ['Ayia  Napa', 'Magaluf'];
+$allTeams = ['Ayia Napa', 'Magaluf'];
 $teamData = [];
 
 // Hämta snittpromille för båda teamen
